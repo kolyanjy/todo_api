@@ -45,6 +45,8 @@ group :test do
   gem 'json_matchers'
   gem 'rspec', '~> 3.8'
   gem 'selenium-webdriver'
+  gem 'simplecov'
+  gem 'shoulda-matchers'
 end
 
 
