@@ -1,8 +1,6 @@
 RSpec.describe 'Registration', type: :request do
-
   describe 'POST /sign_up' do
     let(:attrs) { attributes_for(:user) }
-
 
     context 'with valid params' do
       let(:params) { { user: attrs.merge(password_confirmation: attrs[:password]) } }

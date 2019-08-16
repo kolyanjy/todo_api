@@ -5,8 +5,8 @@ module Api
         before_action :authorize_access_request!, only: :destroy
 
         def create
-          user = User.find_by!(email: user_params[:email])
-          if user.authenticate(user_params[:password])
+          user = User.find_by(email: user_params[:email])
+          if user&.authenticate(user_params[:password])
             payload = { user_id: user.id }
             session = JWTSessions::Session.new(payload: payload, refresh_by_access_allowed: true)
             render(json: { meta: session.login })
@@ -22,11 +22,7 @@ module Api
         private
 
         def user_params
-          params.permit(:email, :password)
-        end
-
-        def biuld_token(id)
-          JsonWebToken.encode(user_id: id)
+          params.require(:user).permit(:email, :password)
         end
       end
     end

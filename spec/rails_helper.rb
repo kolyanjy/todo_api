@@ -1,7 +1,7 @@
 require 'spec_helper'
 ENV['RAILS_ENV'] ||= 'test'
-require File.expand_path('../../config/environment', __FILE__)
-abort("The Rails environment is running in production mode!") if Rails.env.production?
+require File.expand_path('../config/environment', __dir__)
+abort('The Rails environment is running in production mode!') if Rails.env.production?
 
 require 'rspec/rails'
 require 'faker'
@@ -13,7 +13,7 @@ JsonMatchers.schema_root = 'spec/support/api/schemas'
 
 begin
   ActiveRecord::Migration.maintain_test_schema!
-  rescue ActiveRecord::PendingMigrationError => e
+rescue ActiveRecord::PendingMigrationError => e
   puts e.to_s.strip
   exit 1
 end

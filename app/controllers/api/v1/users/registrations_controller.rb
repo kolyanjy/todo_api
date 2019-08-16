@@ -2,7 +2,6 @@ module Api
   module V1
     module Users
       class RegistrationsController < ApplicationController
-
         def create
           user = User.new(user_params)
           if user.save
