@@ -14,12 +14,7 @@ module Api
         private
 
         def user_params
-          data = params.to_unsafe_h[:data]
-          {
-            email: data[:email],
-            password: data[:password],
-            password_confirmation: data[:password_confirmation]
-          }
+          params.to_unsafe_h[:data]
         end
       end
     end
