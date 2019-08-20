@@ -2,7 +2,6 @@ class ApplicationController < ActionController::API
   include JWTSessions::RailsAuthorization
   rescue_from JWTSessions::Errors::Unauthorized, with: :not_authorized
   rescue_from ActiveRecord::RecordNotFound, with: :not_found
-  helper_method :current_user
 
   private
 

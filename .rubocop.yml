@@ -8,7 +8,6 @@ AllCops:
     - 'bin/*'
     - 'app/channels/**/*'
     - 'vendor/**/*'
-    - 'config/**/*'
 
 
 Style/ClassAndModuleChildren:

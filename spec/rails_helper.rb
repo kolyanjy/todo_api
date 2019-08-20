@@ -1,15 +1,19 @@
+require 'simplecov'
+
+SimpleCov.start do
+  add_filter 'spec'
+  minimum_coverage 95
+end
+
 require 'spec_helper'
+
 ENV['RAILS_ENV'] ||= 'test'
 require File.expand_path('../config/environment', __dir__)
 abort('The Rails environment is running in production mode!') if Rails.env.production?
 
 require 'rspec/rails'
-require 'faker'
-require 'json_matchers/rspec'
 
 Dir[File.dirname(__FILE__) + '/support/*.rb'].each { |file| require file }
-
-JsonMatchers.schema_root = 'spec/support/api/schemas'
 
 begin
   ActiveRecord::Migration.maintain_test_schema!
@@ -23,5 +27,4 @@ RSpec.configure do |config|
   config.use_transactional_fixtures = true
   config.infer_spec_type_from_file_location!
   config.filter_rails_from_backtrace!
-  config.include FactoryBot::Syntax::Methods
 end

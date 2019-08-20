@@ -9,10 +9,9 @@ jobs:
           RAILS_ENV: test
       - image: circleci/postgres:11.3-alpine
         environment:
-          POSTGRES_USER: rails_dev
-          POSTGRES_PASSWORD: 'aqwe123'
+          POSTGRES_USER: <%= Rails.application.credentials[:db][:username] %>
+          POSTGRES_PASSWORD: <%= Rails.application.credentials[:db][:password] %>
           POSTGRES_DB: todo_api_test
-          DATABASE_URL: "postgres://ubuntu@localhost:5432/todo_api_test"
       - image: redis
     steps:
       - checkout
@@ -41,13 +40,7 @@ jobs:
 
       - run:
           name: run tests
-          command: |
-            mkdir /tmp/test-results
-            TEST_FILES="$(circleci tests glob "spec/**/*_spec.rb" | circleci tests split --split-by=timings)"
-            bundle exec rspec --format progress \
-                              --out /tmp/test-results/rspec.xml \
-                              --format progress \
-                              $TEST_FILES
+          command: bundle exec rspec
       - run:
           name: run rubopcop
           command: bundle exec rubocop
@@ -59,7 +52,7 @@ jobs:
           command: bundle exec brakeman -q
       - run:
           name: run bundle audit
-          command: bundle exec bundle-audit check --update --ignore CVE-2015-9284
+          command: bundle exec bundle-audit check --update
 
       - store_test_results:
           path: /tmp/test-results

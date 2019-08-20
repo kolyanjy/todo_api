@@ -1,22 +1,24 @@
 RSpec.describe 'Logins', type: :request do
+  include Docs::V1::Login::Api
   let(:user) { create(:user) }
   let(:access_token) { tokens[:access] }
   let(:headers_data) { { 'Authorization': access_token } }
 
   describe 'POST /sign_in' do
-    before { post '/api/v1/users/login', params: params }
+    include Docs::V1::Login::Create
+    before { post '/api/v1/users/login', params: params, as: :json }
 
     context 'with valid params' do
-      let(:params) { { user: { email: user.email, password: user.password } } }
+      let(:params) { { data: { type: "user", email: user.email, password: user.password } } }
 
       it 'when success', :dox do
         expect(status).to eq(200)
-        expect(response).to match_json_schema('tokens/jwts')
+        expect(response).to match_json_schema('users/login/create')
       end
     end
 
     context 'with invalid params' do
-      let(:params) { { user: { email: user.email.succ, password: user.password } } }
+      let(:params) { { data: { type: "user", email: user.email.succ, password: user.password } } }
 
       it 'when not found', :dox do
         expect(status).to eq(401)
@@ -26,6 +28,7 @@ RSpec.describe 'Logins', type: :request do
   end
 
   describe 'DELETE /sign_out' do
+    include Docs::V1::Login::Destroy
     before { delete '/api/v1/users/login', headers: headers_data }
 
     context 'when token exist' do
