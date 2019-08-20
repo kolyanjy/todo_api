@@ -10,7 +10,7 @@ jobs:
       - image: circleci/postgres:11.3-alpine
         environment:
           POSTGRES_USER: kolya
-          POSTGRES_PASSWORD: <%= Rails.application.credentials[:db][:password] %>
+          POSTGRES_PASSWORD: denisloh
           POSTGRES_DB: todo_api_test
       - image: redis
     steps:
@@ -56,4 +56,4 @@ jobs:
 
       - store_test_results:
           path: /tmp/test-results
-          
+
