@@ -9,7 +9,7 @@ RSpec.describe 'Logins', type: :request do
     before { post '/api/v1/users/login', params: params, as: :json }
 
     context 'with valid params' do
-      let(:params) { { data: { type: "user", email: user.email, password: user.password } } }
+      let(:params) { { data: { type: 'user', email: user.email, password: user.password } } }
 
       it 'when success', :dox do
         expect(status).to eq(200)
@@ -18,7 +18,7 @@ RSpec.describe 'Logins', type: :request do
     end
 
     context 'with invalid params' do
-      let(:params) { { data: { type: "user", email: user.email.succ, password: user.password } } }
+      let(:params) { { data: { type: 'user', email: user.email.succ, password: user.password } } }
 
       it 'when not found', :dox do
         expect(status).to eq(401)

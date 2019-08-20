@@ -131,7 +131,7 @@ GEM
       mini_portile2 (~> 2.4.0)
     nokogiri (1.10.4-x86-mingw32)
       mini_portile2 (~> 2.4.0)
-    oj (3.8.1)
+    oj (3.9.0)
     parallel (1.17.0)
     parser (2.6.3.0)
       ast (~> 2.4.0)
@@ -152,7 +152,7 @@ GEM
       pry (>= 0.10.4)
     puma (3.12.1)
     puma (3.12.1-java)
-    pundit (2.0.1)
+    pundit (2.1.0)
       activesupport (>= 3.0.0)
     rack (2.0.7)
     rack-test (1.1.0)
@@ -173,7 +173,7 @@ GEM
     rails-dom-testing (2.0.3)
       activesupport (>= 4.2.0)
       nokogiri (>= 1.6)
-    rails-html-sanitizer (1.2.0)
+    rails-html-sanitizer (1.0.4)
       loofah (~> 2.2, >= 2.2.2)
     rails_best_practices (1.19.4)
       activesupport
@@ -296,6 +296,7 @@ DEPENDENCIES
   puma (~> 3.11)
   pundit
   rails (~> 5.2.3)
+  rails-html-sanitizer (~> 1.0.3)
   rails_best_practices
   redis
   rspec (~> 3.8)

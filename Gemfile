@@ -5,13 +5,14 @@ ruby '2.6.1'
 
 gem 'bcrypt', '~> 3.1.7'
 gem 'bootsnap', '>= 1.1.0', require: false
-gem 'jwt_sessions'
 gem 'fast_jsonapi', '~> 1.5'
+gem 'jwt_sessions'
 gem 'oj'
 gem 'pg'
 gem 'puma', '~> 3.11'
 gem 'pundit'
 gem 'rails', '~> 5.2.3'
+gem 'rails-html-sanitizer', '~> 1.0.3'
 gem 'redis'
 
 group :development, :test do
