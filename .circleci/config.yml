@@ -9,7 +9,7 @@ jobs:
           RAILS_ENV: test
       - image: circleci/postgres:11.3-alpine
         environment:
-          POSTGRES_USER: <%= Rails.application.credentials[:db][:username] %>
+          POSTGRES_USER: kolya
           POSTGRES_PASSWORD: <%= Rails.application.credentials[:db][:password] %>
           POSTGRES_DB: todo_api_test
       - image: redis
