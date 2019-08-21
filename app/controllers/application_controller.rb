@@ -1,15 +1,12 @@
 class ApplicationController < ActionController::API
   include JWTSessions::RailsAuthorization
-  rescue_from JWTSessions::Errors::Unauthorized, with: :not_authorized
-  rescue_from ActiveRecord::RecordNotFound, with: :not_found
+  include JSONAPI::Deserialization
 
-  private
-
-  def not_found
-    head(:not_found)
+  rescue_from JWTSessions::Errors::Unauthorized do
+    head(:unauthorized)
   end
 
-  def not_authorized
-    head(:unauthorized)
+  rescue_from ActiveRecord::RecordNotFound do
+    head(:not_found)
   end
 end

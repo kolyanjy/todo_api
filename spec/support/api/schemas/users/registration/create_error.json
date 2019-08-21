@@ -10,23 +10,77 @@
   "properties": {
     "errors": {
       "$id": "#/properties/errors",
-      "type": "object",
+      "type": "array",
       "title": "The Errors Schema",
-      "required": [
-        "password_confirmation"
-      ],
-      "properties": {
-        "password_confirmation": {
-          "$id": "#/properties/errors/properties/password_confirmation",
-          "type": "array",
-          "title": "The Password_confirmation Schema",
-          "items": {
-            "$id": "#/properties/errors/properties/password_confirmation/items",
+      "items": {
+        "$id": "#/properties/errors/items",
+        "type": "object",
+        "title": "The Items Schema",
+        "required": [
+          "status",
+          "source",
+          "title",
+          "detail",
+          "code"
+        ],
+        "properties": {
+          "status": {
+            "$id": "#/properties/errors/items/properties/status",
             "type": "string",
-            "title": "The Items Schema",
+            "title": "The Status Schema",
             "default": "",
             "examples": [
-              "doesn't match Password"
+              "422"
+            ],
+            "pattern": "^(.*)$"
+          },
+          "source": {
+            "$id": "#/properties/errors/items/properties/source",
+            "type": "object",
+            "title": "The Source Schema",
+            "required": [
+              "pointer"
+            ],
+            "properties": {
+              "pointer": {
+                "$id": "#/properties/errors/items/properties/source/properties/pointer",
+                "type": "string",
+                "title": "The Pointer Schema",
+                "default": "",
+                "examples": [
+                  ""
+                ],
+                "pattern": "^(.*)$"
+              }
+            }
+          },
+          "title": {
+            "$id": "#/properties/errors/items/properties/title",
+            "type": "string",
+            "title": "The Title Schema",
+            "default": "",
+            "examples": [
+              "Unprocessable Entity"
+            ],
+            "pattern": "^(.*)$"
+          },
+          "detail": {
+            "$id": "#/properties/errors/items/properties/detail",
+            "type": "string",
+            "title": "The Detail Schema",
+            "default": "",
+            "examples": [
+              "Password confirmation doesn't match Password"
+            ],
+            "pattern": "^(.*)$"
+          },
+          "code": {
+            "$id": "#/properties/errors/items/properties/code",
+            "type": "string",
+            "title": "The Code Schema",
+            "default": "",
+            "examples": [
+              "confirmation"
             ],
             "pattern": "^(.*)$"
           }

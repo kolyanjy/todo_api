@@ -1,29 +1,40 @@
 source 'https://rubygems.org'
-git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '2.6.1'
 
+# auth
 gem 'bcrypt', '~> 3.1.7'
-gem 'bootsnap', '>= 1.1.0', require: false
-gem 'fast_jsonapi', '~> 1.5'
 gem 'jwt_sessions'
+
+#jsonapi
+gem 'jsonapi.rb', require: 'jsonapi'
+
+# serializer
+gem 'fast_jsonapi', '~> 1.5'
 gem 'oj'
-gem 'pg'
-gem 'puma', '~> 3.11'
+
+# authorization
 gem 'pundit'
-gem 'rails', '~> 5.2.3'
-gem 'rails-html-sanitizer', '~> 1.0.3'
+
+# storage
+gem 'pg'
 gem 'redis'
 
+# system
+gem 'bootsnap', '>= 1.1.0', require: false
+gem 'puma', '~> 3.11'
+gem 'rails', '~> 5.2.3'
+
 group :development, :test do
-  gem 'brakeman'
-  gem 'bundler-audit'
-  gem 'byebug', platforms: %i[mri mingw x64_mingw]
   gem 'factory_bot_rails'
   gem 'faker'
   gem 'pry-byebug'
-  gem 'rails_best_practices'
   gem 'rspec-rails'
+
+  # linters
+  gem 'brakeman'
+  gem 'bundler-audit'
+  gem 'rails_best_practices'
   gem 'rubocop'
   gem 'rubocop-performance'
   gem 'rubocop-rspec'

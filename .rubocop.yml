@@ -9,12 +9,8 @@ AllCops:
     - 'app/channels/**/*'
     - 'vendor/**/*'
 
-
 Style/ClassAndModuleChildren:
   EnforcedStyle: nested
-
-Style/Encoding:
-  Enabled: false
 
 RSpec/MessageSpies:
   EnforcedStyle: receive

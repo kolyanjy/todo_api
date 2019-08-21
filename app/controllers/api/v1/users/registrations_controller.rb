@@ -2,13 +2,12 @@ module Api
   module V1
     module Users
       class RegistrationsController < ApplicationController
-        include TakeDataConcern
         def create
-          user = User.new(data_params)
+          user = User.new(jsonapi_deserialize(params, only: %i[email password password_confirmation]))
           if user.save
-            render(json: UserSerializer.new(user))
+            render jsonapi: user
           else
-            render(json: { errors: user.errors }, status: 422)
+            render jsonapi_errors: user.errors, status: 422
           end
         end
       end

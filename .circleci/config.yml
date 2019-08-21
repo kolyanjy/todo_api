@@ -3,22 +3,19 @@ jobs:
   build:
     working_directory: ~/repo
     docker:
-      # specify the version you desire here
-      - image: circleci/ruby:2.6.1-node-browsers
+      - image: circleci/ruby:2.6.1
         environment:
           RAILS_ENV: test
-      - image: circleci/postgres:11.3-alpine
+      - image: circleci/postgres:11-alpine
         environment:
           POSTGRES_USER: kolya
-          POSTGRES_PASSWORD: denisloh
           POSTGRES_DB: todo_api_test
-      - image: redis
+      - image: circleci/redis:5-alpine
     steps:
       - checkout
       - restore_cache:
           keys:
           - v2-dependencies-{{ checksum "Gemfile.lock" }}
-          # fallback to using the latest cache if no exact match is found
           - v2-dependencies-
 
       - run:
@@ -34,9 +31,7 @@ jobs:
 
       - run:
           name: Set up DB
-          command: |
-            bundle exec rake db:create
-            bundle exec rake db:migrate
+          command: bundle exec rake db:migrate
 
       - run:
           name: run tests
@@ -54,6 +49,4 @@ jobs:
           name: run bundle audit
           command: bundle exec bundle-audit check --update
 
-      - store_test_results:
-          path: /tmp/test-results
 

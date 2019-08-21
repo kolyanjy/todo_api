@@ -24,7 +24,7 @@
           "title": "The Id Schema",
           "default": "",
           "examples": [
-            "15"
+            "2"
           ],
           "pattern": "^(.*)$"
         },
@@ -45,7 +45,8 @@
           "required": [
             "email",
             "created_at",
-            "updated_at"
+            "updated_at",
+            "password"
           ],
           "properties": {
             "email": {
@@ -54,7 +55,7 @@
               "title": "The Email Schema",
               "default": "",
               "examples": [
-                "keklol@gmail.rol"
+                "keklol1233@gmail.com"
               ],
               "pattern": "^(.*)$"
             },
@@ -64,7 +65,7 @@
               "title": "The Created_at Schema",
               "default": "",
               "examples": [
-                "2019-08-20T09:21:38.769Z"
+                "2019-08-21T09:27:56.974Z"
               ],
               "pattern": "^(.*)$"
             },
@@ -74,7 +75,17 @@
               "title": "The Updated_at Schema",
               "default": "",
               "examples": [
-                "2019-08-20T09:21:38.769Z"
+                "2019-08-21T09:27:56.974Z"
+              ],
+              "pattern": "^(.*)$"
+            },
+            "password": {
+              "$id": "#/properties/data/properties/attributes/properties/password",
+              "type": "string",
+              "title": "The Password Schema",
+              "default": "",
+              "examples": [
+                "123456"
               ],
               "pattern": "^(.*)$"
             }

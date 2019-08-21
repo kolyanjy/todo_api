@@ -10,7 +10,8 @@ module Api
           if user&.authenticate(data_params[:password])
             payload = { user_id: user.id }
             session = JWTSessions::Session.new(payload: payload)
-            render(json: { meta: session.login })
+            # binding.pry
+            render(jsonapi: session.login )
           else
             head(:unauthorized)
           end
@@ -18,6 +19,12 @@ module Api
 
         def destroy
           JWTSessions::Session.new(payload: payload).flush_by_access_payload
+        end
+
+        private
+
+        def jsonapi_meta(resources)
+          { tokens: resources }
         end
       end
     end

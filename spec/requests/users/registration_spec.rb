@@ -5,7 +5,7 @@ RSpec.describe 'Registration', type: :request do
     let(:attrs) { attributes_for(:user) }
 
     context 'with valid params' do
-      let(:params) { { data: attrs.merge(password_confirmation: attrs[:password]) } }
+      let(:params) { { data: { attributes: attrs.merge(password_confirmation: attrs[:password]) } } }
 
       it 'when success', :dox do
         post '/api/v1/users/registration', params: params
@@ -15,7 +15,7 @@ RSpec.describe 'Registration', type: :request do
     end
 
     context 'with invalid params' do
-      let(:params) { { data: attrs.merge(password_confirmation: 'lol') } }
+      let(:params) { { data: { attributes: attrs.merge(password_confirmation: 'lol') } } }
 
       it 'when not created', :dox do
         post '/api/v1/users/registration', params: params
