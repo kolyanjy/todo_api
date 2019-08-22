@@ -48,7 +48,7 @@ group :development do
 end
 
 group :test do
-  gem 'dox', '~> 1.1', require: false
+  gem 'dox', '~> 1.1'
   gem 'json_matchers'
   gem 'rspec', '~> 3.8'
   gem 'selenium-webdriver'

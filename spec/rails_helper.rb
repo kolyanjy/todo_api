@@ -13,7 +13,6 @@ abort('The Rails environment is running in production mode!') if Rails.env.produ
 
 require 'rspec/rails'
 
-Dir[File.dirname(__FILE__) + '/helpers/**/*.rb'].each { |file| require file }
 Dir.glob(File.expand_path('support/**/*.rb', __dir__), &method(:require))
 
 begin
@@ -28,4 +27,8 @@ RSpec.configure do |config|
   config.use_transactional_fixtures = true
   config.infer_spec_type_from_file_location!
   config.filter_rails_from_backtrace!
+
+  config.include_context 'default headers', type: :request
+  config.include_context 'authorized user', type: :request
+  config.include Helpers::Params, type: :request
 end

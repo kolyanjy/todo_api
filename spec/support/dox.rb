@@ -1,5 +1,3 @@
-require 'dox'
-
 RSpec.configure do |config|
   config.after(:each, :dox) do |example|
     example.metadata[:request] = request

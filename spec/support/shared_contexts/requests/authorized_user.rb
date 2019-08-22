@@ -1,4 +1,4 @@
-RSpec.shared_context 'when authorize user', shared_context: :metadata do
+RSpec.shared_context 'authorized user', shared_context: :metadata do
   let(:user) { create(:user) }
   let(:access_token) { tokens[:access] }
   let(:headers_data) { { 'Authorization': access_token } }

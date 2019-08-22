@@ -1,11 +1,12 @@
 RSpec.describe 'Registration', type: :request do
   include Docs::V1::Registration::Api
-  include Helpers::Params
 
   describe 'POST /sign_up' do
     include Docs::V1::Registration::Create
 
-    before { post '/api/v1/users/registration', params: params }
+    before do
+      post '/api/v1/users/registration', params: params, headers: default_headers
+    end
 
     let(:attrs) { attributes_for(:user) }
 
