@@ -1,4 +1,3 @@
-
 module Helpers
   module Params
     def build_params(params)

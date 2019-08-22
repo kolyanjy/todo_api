@@ -6,7 +6,7 @@ ruby '2.6.1'
 gem 'bcrypt', '~> 3.1.7'
 gem 'jwt_sessions'
 
-#jsonapi
+# jsonapi
 gem 'jsonapi.rb', require: 'jsonapi'
 
 # serializer
