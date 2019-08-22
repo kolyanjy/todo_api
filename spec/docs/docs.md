@@ -9,7 +9,7 @@ Api todo list for RubyGarage course
 ### Create a session [POST /api/v1/users/login]
 
 
-+ Request when success
++ Request authenticate user
 **POST**&nbsp;&nbsp;`/api/v1/users/login`
 
     + Headers
@@ -21,9 +21,11 @@ Api todo list for RubyGarage course
 
             {
               "data": {
-                "type": "user",
-                "email": "charolette@upton.name",
-                "password": "DiSnOxEk662aU"
+                "attributes": {
+                  "type": "user",
+                  "email": "tomas.witting@howellschmidt.net",
+                  "password": "AhJ6CoVq4uXvCmS0"
+                }
               }
             }
 
@@ -31,21 +33,22 @@ Api todo list for RubyGarage course
 
     + Headers
 
-            Content-Type: application/json; charset=utf-8
+            Content-Type: application/vnd.api+json; charset=utf-8
 
     + Body
 
             {
+              "data": null,
               "meta": {
-                "csrf": "6oR852J74/1eGrzbd/XdvoBv1Ezh+FHITkGkq9kdSP5Vs82GrklqZomh9Kb4FZmnlY8D7zigia/aDDYErKDYtQ==",
-                "access": "eyJhbGciOiJIUzI1NiJ9.eyJleHAiOjE1NjYyOTc1MzMsInVzZXJfaWQiOjIwOCwidWlkIjoiMmY1NmUwM2MtMzUyYy00MDk0LTk0YmYtY2I2YjNiYzA5OWQ4IiwiZXhwIjoxNTY2Mjk3NTMzfQ.-woeBR2EcO_fQXg7xTP5o9il1MK_mTXyZHMoGkZo_LE",
-                "access_expires_at": "2019-08-20T13:38:53.000+03:00",
-                "refresh": "eyJhbGciOiJIUzI1NiJ9.eyJleHAiOjE1NjYyOTc1MzMsInVpZCI6ImJlOWUwOWIyLTg3ZTQtNDA1ZC1hZTQyLWQ0Y2ZlMTE4ZmRiMyIsImV4cCI6MTU2Njg5ODczM30.USjded1OmjHWDICmh7XLOhiPZn4rYgz7BxQE0EU6DFI",
-                "refresh_expires_at": "2019-08-27T12:38:53.000+03:00"
+                "csrf": "VJb3WhJIB+lNcy+mU4y3xpSEJ5q3VaMWOfvR/urPb1+IbQ3eZPYR+u5N0C8U2TOP37gtg+MtpXGn12tFE6hOOA==",
+                "access": "eyJhbGciOiJIUzI1NiJ9.eyJleHAiOjE1NjY0ODA1MTYsInVzZXJfaWQiOjgzLCJ1aWQiOiIyMDY0Mjg0MS0yMTQ5LTRjMDAtODViNi1hMTNlOWIyZjAzNjkiLCJleHAiOjE1NjY0ODA1MTZ9.63jDlkG47p1VNc2d2K4mUWuBdU0s6qvOO9zI608ZNdo",
+                "access_expires_at": "2019-08-22T16:28:36.000+03:00",
+                "refresh": "eyJhbGciOiJIUzI1NiJ9.eyJleHAiOjE1NjY0ODA1MTYsInVpZCI6ImExZDBiODE5LTUzZjQtNGI5Ni1iYmQ0LTY0ZDg0MWVkODQ2MyIsImV4cCI6MTU2NzA4MTcxNn0.9T6BLfTlydHaRezABXmCJODc4wWlBATZH2q7eGK5rFs",
+                "refresh_expires_at": "2019-08-29T15:28:36.000+03:00"
               }
             }
 
-+ Request when not found
++ Request invalid authenticate user
 **POST**&nbsp;&nbsp;`/api/v1/users/login`
 
     + Headers
@@ -57,9 +60,11 @@ Api todo list for RubyGarage course
 
             {
               "data": {
-                "type": "user",
-                "email": "jan@yundt.namf",
-                "password": "RiP95wB6TkPh4d2"
+                "attributes": {
+                  "type": "user",
+                  "email": "sofia@bartolettibernier.infp",
+                  "password": "1yYyIsTb"
+                }
               }
             }
 
@@ -105,7 +110,7 @@ Api todo list for RubyGarage course
 ### Create user [POST /api/v1/users/registration]
 
 
-+ Request when success
++ Request create and return user
 **POST**&nbsp;&nbsp;`/api/v1/users/registration`
 
     + Headers
@@ -115,29 +120,30 @@ Api todo list for RubyGarage course
 
     + Body
 
-            data[email]=augustine%40westdickinson.com&data[password]=1bXnK726L9Cz&data[password_confirmation]=1bXnK726L9Cz
+            data[attributes][email]=mason.barton%40will.co&data[attributes][password]=BzAs1x16RbSj7&data[attributes][password_confirmation]=BzAs1x16RbSj7
 
 + Response 200
 
     + Headers
 
-            Content-Type: application/json; charset=utf-8
+            Content-Type: application/vnd.api+json; charset=utf-8
 
     + Body
 
             {
               "data": {
-                "id": "211",
+                "id": "86",
                 "type": "users",
                 "attributes": {
-                  "email": "augustine@westdickinson.com",
-                  "created_at": "2019-08-20T09:38:53.085Z",
-                  "updated_at": "2019-08-20T09:38:53.085Z"
+                  "email": "mason.barton@will.co",
+                  "created_at": "2019-08-22T12:28:36.587Z",
+                  "updated_at": "2019-08-22T12:28:36.587Z",
+                  "password": "BzAs1x16RbSj7"
                 }
               }
             }
 
-+ Request when not created
++ Request return errors for user
 **POST**&nbsp;&nbsp;`/api/v1/users/registration`
 
     + Headers
@@ -147,20 +153,26 @@ Api todo list for RubyGarage course
 
     + Body
 
-            data[email]=julian.wehner%40hilpertframi.name&data[password]=Au990oM2C7Q&data[password_confirmation]=lol
+            data[attributes][email]=claudio.gaylord%40hegmann.net&data[attributes][password]=IvD7Nf70H&data[attributes][password_confirmation]=lol
 
 + Response 422
 
     + Headers
 
-            Content-Type: application/json; charset=utf-8
+            Content-Type: application/vnd.api+json; charset=utf-8
 
     + Body
 
             {
-              "errors": {
-                "password_confirmation": [
-                  "doesn't match Password"
-                ]
-              }
+              "errors": [
+                {
+                  "status": "422",
+                  "source": {
+                    "pointer": ""
+                  },
+                  "title": "Unprocessable Entity",
+                  "detail": "Password confirmation doesn't match Password",
+                  "code": "confirmation"
+                }
+              ]
             }

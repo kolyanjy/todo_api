@@ -6,12 +6,11 @@ module Api
         before_action :authorize_by_access_header!, only: :destroy
 
         def create
-          user = User.find_by(email: data_params[:email])
-          if user&.authenticate(data_params[:password])
+          user = User.find_by(jsonapi_deserialize(params, only: :email))
+          if user&.authenticate(jsonapi_deserialize(params, only: :password)['password'])
             payload = { user_id: user.id }
             session = JWTSessions::Session.new(payload: payload)
-            # binding.pry
-            render(jsonapi: session.login )
+            render(jsonapi: nil, meta: session.login)
           else
             head(:unauthorized)
           end
@@ -19,12 +18,6 @@ module Api
 
         def destroy
           JWTSessions::Session.new(payload: payload).flush_by_access_payload
-        end
-
-        private
-
-        def jsonapi_meta(resources)
-          { tokens: resources }
         end
       end
     end

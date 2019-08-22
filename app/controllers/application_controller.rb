@@ -9,4 +9,12 @@ class ApplicationController < ActionController::API
   rescue_from ActiveRecord::RecordNotFound do
     head(:not_found)
   end
+
+  private
+
+  def jsonapi_serializer_class(resource, is_collection)
+    JSONAPI::Rails.serializer_class(resource, is_collection)
+  rescue NameError
+    ApplicationSerializer
+  end
 end
