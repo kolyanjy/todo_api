@@ -31,5 +31,6 @@ Metrics/BlockLength:
 RSpec/MultipleExpectations:
   Enabled: false
 
-Exclude:
-  - 'spec/support/**/*'
+RSpec/ContextWording:
+  Exclude:
+    - 'spec/support/**/*'
