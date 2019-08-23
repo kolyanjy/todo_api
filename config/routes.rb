@@ -5,6 +5,7 @@ Rails.application.routes.draw do
         resource :login, only: %i[create destroy]
         resource :registration, only: :create
       end
+      resources :projects
     end
   end
 end
