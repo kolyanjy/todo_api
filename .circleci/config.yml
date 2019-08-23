@@ -4,50 +4,50 @@ jobs:
     working_directory: ~/repo
     docker:
       - image: circleci/ruby:2.6.1
-      environment:
-        RAILS_ENV: test
+        environment:
+          RAILS_ENV: test
       - image: circleci/postgres:11-alpine
-      environment:
-        POSTGRES_USER: kolya
-        POSTGRES_DB: todo_api_test
+        environment:
+          POSTGRES_USER: kolya
+          POSTGRES_DB: todo_api_test
       - image: circleci/redis:5-alpine
     steps:
       - checkout
       - restore_cache:
-        keys:
-          - v2-dependencies-{{ checksum "Gemfile.lock" }}
-          - v2-dependencies-
+          keys:
+            - v2-dependencies-{{ checksum "Gemfile.lock" }}
+            - v2-dependencies-
       - run:
-        name: install dependencies
-        command: |
-          gem install bundler -v $(cat Gemfile.lock | tail -1 | tr -d " ")
-          bundle install --jobs=4 --retry=3 --path vendor/bundle
+          name: install dependencies
+          command: |
+            gem install bundler -v $(cat Gemfile.lock | tail -1 | tr -d " ")
+            bundle install --jobs=4 --retry=3 --path vendor/bundle
 
       - save_cache:
-        key: v2-dependencies-{{ checksum "Gemfile.lock" }}
-        paths:
-          - vendor/bundle
+          key: v2-dependencies-{{ checksum "Gemfile.lock" }}
+          paths:
+            - vendor/bundle
 
       - run:
-        name: Set up DB
-        command: bundle exec rake db:migrate
+          name: Set up DB
+          command: bundle exec rake db:migrate
 
       - run:
-        name: run tests
-        command: bundle exec rspec
+          name: run tests
+          command: bundle exec rspec
 
       - run:
-        name: run rubocop
-        command: bundle exec rubocop
+          name: run rubocop
+          command: bundle exec rubocop
 
       - run:
-        name: run rails best practices
-        command: bundle exec rails_best_practices .
+          name: run rails best practices
+          command: bundle exec rails_best_practices .
 
       - run:
-        name: run brakeman
-        command: bundle exec brakeman -q
+          name: run brakeman
+          command: bundle exec brakeman -q
 
       - run:
-        name: run bundle audit
-        command: bundle exec bundle-audit check --update
+          name: run bundle audit
+          command: bundle exec bundle-audit check --update
