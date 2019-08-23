@@ -1,7 +1,7 @@
 RSpec.describe 'Session', type: :request do
   include Docs::V1::Login::Api
 
-  describe 'POST /users/logins' do
+  describe 'POST /users/session' do
     include Docs::V1::Login::Create
 
     before do
@@ -20,24 +20,25 @@ RSpec.describe 'Session', type: :request do
     context 'with invalid params' do
       let(:params) { build_params(type: 'user', email: 'lol@kek.ru', password: user.password) }
 
-      it_behaves_like 'unathorized'
+      include_examples 'unathorized'
     end
   end
 
   describe 'DELETE /users/logins' do
     include Docs::V1::Login::Destroy
+
     before do
       delete '/api/v1/users/session', headers: default_headers.merge(auth_header)
     end
 
-    context 'when succsess destroy a session' do
-      it_behaves_like 'no content'
+    context 'when success destroy a session' do
+      include_examples 'no content'
     end
 
     context 'when failed destroy a session' do
       let(:tokens) { { lol: 'kek' } }
 
-      it_behaves_like 'unathorized'
+      include_examples 'unathorized'
     end
   end
 end
