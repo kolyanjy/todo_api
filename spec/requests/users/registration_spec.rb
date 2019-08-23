@@ -1,7 +1,7 @@
 RSpec.describe 'Registration', type: :request do
   include Docs::V1::Registration::Api
 
-  describe 'POST /sign_up' do
+  describe 'POST /users/registrations' do
     include Docs::V1::Registration::Create
 
     before do
@@ -22,10 +22,7 @@ RSpec.describe 'Registration', type: :request do
     context 'with invalid params' do
       let(:params) { build_params(attrs.merge(password_confirmation: 'lol')) }
 
-      it 'return errors for user', :dox do
-        expect(status).to eq(422)
-        expect(response).to match_json_schema('errors/entitie_error')
-      end
+      it_behaves_like 'unprocessable entity'
     end
   end
 end

@@ -49,7 +49,7 @@ end
 
 group :test do
   gem 'dox', '~> 1.1'
-  gem 'json_matchers'
+  gem 'json_matchers', require: 'json_matchers/rspec'
   gem 'rspec', '~> 3.8'
   gem 'selenium-webdriver'
   gem 'shoulda-matchers'
