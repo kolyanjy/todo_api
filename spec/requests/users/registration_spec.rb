@@ -13,7 +13,7 @@ RSpec.describe 'Registration', type: :request do
     context 'with valid params' do
       let(:params) { build_params(attrs.merge(password_confirmation: attrs[:password])) }
 
-      it 'create and return user', :dox do
+      it 'creates and return user', :dox do
         expect(status).to eq(200)
         expect(response).to match_json_schema('users/registration/create')
       end
