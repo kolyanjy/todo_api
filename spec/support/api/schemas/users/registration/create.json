@@ -45,8 +45,7 @@
           "required": [
             "email",
             "created_at",
-            "updated_at",
-            "password"
+            "updated_at"
           ],
           "properties": {
             "email": {
@@ -76,16 +75,6 @@
               "default": "",
               "examples": [
                 "2019-08-21T09:27:56.974Z"
-              ],
-              "pattern": "^(.*)$"
-            },
-            "password": {
-              "$id": "#/properties/data/properties/attributes/properties/password",
-              "type": "string",
-              "title": "The Password Schema",
-              "default": "",
-              "examples": [
-                "123456"
               ],
               "pattern": "^(.*)$"
             }

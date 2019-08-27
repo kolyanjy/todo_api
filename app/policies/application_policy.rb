@@ -15,7 +15,7 @@ class ApplicationPolicy
   end
 
   def create?
-    belongs_to_user?
+    false
   end
 
   def new?

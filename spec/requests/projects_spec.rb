@@ -6,7 +6,7 @@ RSpec.describe 'Projects', type: :request do
   describe 'GET /projects' do
     include Docs::V1::Projects::Index
 
-    before { get api_v1_projects_path, headers: default_headers.merge(headers_data) }
+    before { get api_v1_projects_path, headers: default_headers.merge(auth_header) }
 
     it 'return collection of projects', :dox do
       expect(status).to eq(200)
@@ -18,7 +18,7 @@ RSpec.describe 'Projects', type: :request do
     include Docs::V1::Projects::Show
 
     context 'when success find project' do
-      before { get api_v1_project_path(project.id), headers: default_headers.merge(headers_data) }
+      before { get api_v1_project_path(project.id), headers: default_headers.merge(auth_header) }
 
       it 'return one project', :dox do
         expect(response).to match_response_schema('projects/show')
@@ -27,7 +27,7 @@ RSpec.describe 'Projects', type: :request do
     end
 
     context 'when project not found' do
-      before { get api_v1_project_path(100), headers: default_headers.merge(headers_data) }
+      before { get api_v1_project_path(100), headers: default_headers.merge(auth_header) }
 
       it 'return status not found', :dox do
         expect(status).to eq(404)
@@ -38,7 +38,7 @@ RSpec.describe 'Projects', type: :request do
   describe 'POST /projects' do
     include Docs::V1::Projects::Create
 
-    before { post api_v1_projects_path, params: params, headers: default_headers.merge(headers_data) }
+    before { post api_v1_projects_path, params: params, headers: default_headers.merge(auth_header) }
 
     context 'when success create project' do
 
@@ -63,7 +63,7 @@ RSpec.describe 'Projects', type: :request do
   describe 'PATCH /projects/:id' do
     include Docs::V1::Projects::Update
 
-    before { patch api_v1_project_path(project.id), params: params, headers: default_headers.merge(headers_data) }
+    before { patch api_v1_project_path(project.id), params: params, headers: default_headers.merge(auth_header) }
 
     context 'when success update project' do
 
@@ -89,14 +89,14 @@ RSpec.describe 'Projects', type: :request do
     include Docs::V1::Projects::Destroy
 
     context 'when success update project' do
-      before { delete api_v1_project_path(project.id), headers: default_headers.merge(headers_data) }
+      before { delete api_v1_project_path(project.id), headers: default_headers.merge(auth_header) }
       it 'return status success', :dox do
         expect(status).to eq(204)
       end
     end
 
     context 'when project not found' do
-      before { delete api_v1_project_path(100), headers: default_headers.merge(headers_data) }
+      before { delete api_v1_project_path(100), headers: default_headers.merge(auth_header) }
       it 'return status not found', :dox do
         expect(status).to eq(404)
       end

@@ -1,7 +1,6 @@
-class ProjectSerializer
-  include FastJsonapi::ObjectSerializer
-  set_type :project
+class ProjectSerializer < ApplicationSerializer
+  set_type :projects
   attributes :name
 
-  belongs_to :user
+  belongs_to :user, record_type: :users
 end

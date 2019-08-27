@@ -15,9 +15,8 @@ jobs:
       - checkout
       - restore_cache:
           keys:
-          - v2-dependencies-{{ checksum "Gemfile.lock" }}
-          - v2-dependencies-
-
+            - v2-dependencies-{{ checksum "Gemfile.lock" }}
+            - v2-dependencies-
       - run:
           name: install dependencies
           command: |
@@ -36,17 +35,19 @@ jobs:
       - run:
           name: run tests
           command: bundle exec rspec
+
       - run:
-          name: run rubopcop
+          name: run rubocop
           command: bundle exec rubocop
+
       - run:
           name: run rails best practices
           command: bundle exec rails_best_practices .
+
       - run:
           name: run brakeman
           command: bundle exec brakeman -q
+
       - run:
           name: run bundle audit
           command: bundle exec bundle-audit check --update
-
-

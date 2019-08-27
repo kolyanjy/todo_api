@@ -13,8 +13,7 @@ module Api
       end
 
       def create
-        parsed_params = jsonapi_deserialize(params)
-        authorize project = Project.new(name: parsed_params['name'],user_id: payload['user_id'])
+        project = current_user.projects.build(project_params)
         if project.save
           render jsonapi: project, status: 201
         else
@@ -23,7 +22,7 @@ module Api
       end
 
       def update
-        if authorize(@project).update(jsonapi_deserialize(params, only: :name))
+        if authorize(@project).update(project_params)
           @project.save
           render jsonapi: @project, status: 200
         else
@@ -40,6 +39,10 @@ module Api
 
       def find_project
         @project = Project.find_by!(id: params[:id])
+      end
+
+      def project_params
+        jsonapi_deserialize(params, only: :name)
       end
     end
   end
