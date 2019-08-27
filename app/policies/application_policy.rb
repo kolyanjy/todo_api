@@ -18,16 +18,8 @@ class ApplicationPolicy
     false
   end
 
-  def new?
-    create?
-  end
-
   def update?
     belongs_to_parent?
-  end
-
-  def edit?
-    update?
   end
 
   def destroy?

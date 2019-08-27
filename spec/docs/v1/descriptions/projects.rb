@@ -21,7 +21,6 @@ module Docs
         action 'Get project' do
           path '/api/v1/projects/:id'
           verb 'GET'
-          params id: { type: :integer, required: :required, value: 1 }
         end
       end
 
@@ -29,7 +28,6 @@ module Docs
         action 'Create a project' do
           path '/api/v1/projects'
           verb 'POST'
-          params name: { type: :string, required: :required, value: 'New_project_name' }
         end
       end
 
@@ -37,8 +35,6 @@ module Docs
         action 'Update a project' do
           path '/api/v1/projects/:id'
           verb 'PUT'
-          params id: { type: :integer, required: :required, value: 1 },
-                 name: { type: :string, required: :required, value: 'New project name' }
         end
       end
 
@@ -46,7 +42,6 @@ module Docs
         action 'Delete a project' do
           path '/api/v1/projects/:id'
           verb 'DELETE'
-          params id: { type: :integer, required: :required, value: 1 }
         end
       end
     end

@@ -5,6 +5,8 @@ class ProjectPolicy < ApplicationPolicy
     end
   end
 
+  private
+
   def belongs_to_parent?
     @record.user_id == @user.id
   end

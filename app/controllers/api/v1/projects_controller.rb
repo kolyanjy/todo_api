@@ -1,15 +1,14 @@
 module Api
   module V1
-    class ProjectsController < ApplicationController
-      before_action :authorize_by_access_header!
+    class ProjectsController < ApiController
       before_action :find_project, except: %i[index create]
 
       def index
-        render jsonapi: policy_scope(Project), status: 200
+        render jsonapi: policy_scope(Project)
       end
 
       def show
-        render jsonapi: authorize(@project), status: 200
+        render jsonapi: authorize(@project)
       end
 
       def create
@@ -23,8 +22,7 @@ module Api
 
       def update
         if authorize(@project).update(project_params)
-          @project.save
-          render jsonapi: @project, status: 200
+          render jsonapi: @project
         else
           render jsonapi_errors: @project.errors, status: 422
         end
@@ -32,7 +30,6 @@ module Api
 
       def destroy
         authorize(@project).destroy
-        head(:no_content)
       end
 
       private
