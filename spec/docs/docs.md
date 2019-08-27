@@ -9,71 +9,6 @@ Api todo list for RubyGarage course
 ### Create a session [POST /api/v1/users/session]
 
 
-+ Request authenticate and return user
-**POST**&nbsp;&nbsp;`/api/v1/users/session`
-
-    + Headers
-
-            Accept: application/vnd.api+json
-            Content-Type: application/vnd.api+json
-
-    + Body
-
-            {
-              "data": {
-                "attributes": {
-                  "type": "user",
-                  "email": "hilde@herzog.org",
-                  "password": "7j2cCiU973I0K"
-                }
-              }
-            }
-
-+ Response 200
-
-    + Headers
-
-            Content-Type: application/vnd.api+json; charset=utf-8
-
-    + Body
-
-            {
-              "data": null,
-              "meta": {
-                "csrf": "PDQu2lUCanOM+XU7lG9WAKkw98PGqe2yaR1hx7tNuh4JbvTFyeui0TgeLIzP13qHmj9IaJmqm82ypVUAH3qhig==",
-                "access": "eyJhbGciOiJIUzI1NiJ9.eyJleHAiOjE1NjY5MDM2NTIsInVzZXJfaWQiOjc1NywidWlkIjoiYzBiZWM2ZjMtY2RkZi00NmNhLWIxZTctOGE5ZDExZTQ2OTI3IiwiZXhwIjoxNTY2OTAzNjUyLCJydWlkIjoiODBkMWJiNzUtMTk5MS00NzkxLTg1NDAtYzdkOGViOGUyNmIxIn0.o4qttmIfM-p1nClAahOBG5u3IV81nyD8SiOc_n05AB4",
-                "access_expires_at": "2019-08-27T14:00:52.000+03:00",
-                "refresh": "eyJhbGciOiJIUzI1NiJ9.eyJleHAiOjE1NjY5MDM2NTIsInVpZCI6IjgwZDFiYjc1LTE5OTEtNDc5MS04NTQwLWM3ZDhlYjhlMjZiMSIsImV4cCI6MTU2NzUwNDg1Mn0.594s6prMArvUWwNNAS_Y3_7N8c71UK6hju8x8r2JICU",
-                "refresh_expires_at": "2019-09-03T13:00:52.000+03:00"
-              }
-            }
-
-+ Request return unauthorized status
-**POST**&nbsp;&nbsp;`/api/v1/users/session`
-
-    + Headers
-
-            Accept: application/vnd.api+json
-            Content-Type: application/vnd.api+json
-
-    + Body
-
-            {
-              "data": {
-                "attributes": {
-                  "type": "user",
-                  "email": "lol@kek.ru",
-                  "password": "I95x39Pt8b"
-                }
-              }
-            }
-
-+ Response 401
-
-    + Headers
-
-            Content-Type: application/vnd.api+json
-
 + Request returns user
 **POST**&nbsp;&nbsp;`/api/v1/users/session`
 
@@ -88,8 +23,8 @@ Api todo list for RubyGarage course
               "data": {
                 "attributes": {
                   "type": "user",
-                  "email": "olen_keler@king.co",
-                  "password": "RaHf2o9j4c8"
+                  "email": "erik.ankunding@white.name",
+                  "password": "6z8pYyU5U"
                 }
               }
             }
@@ -105,11 +40,11 @@ Api todo list for RubyGarage course
             {
               "data": null,
               "meta": {
-                "csrf": "ee4tFmGH7jtrEmhJ2D/Yh3iEnQQdeXZZ2K1MvgCSEVPow6qAiuwcOFtz1Px5PTLR/ob7o6M8e2FeliiUGLO/kQ==",
-                "access": "eyJhbGciOiJIUzI1NiJ9.eyJleHAiOjE1NjY5MDM2NTIsInVzZXJfaWQiOjc2MSwidWlkIjoiZTdiZjVmZjktNzY3My00ZjUyLTk1NzQtZGMyMWE5MzlkZDJmIiwiZXhwIjoxNTY2OTAzNjUyLCJydWlkIjoiMGViNWZhY2QtYTM4YS00MDE1LWE5OTItM2NjZDQ1ZjBhMThiIn0.oNZZWN0hqdaNFSzWKZSzGA5igGBKbV22P1n-HTEuhxU",
-                "access_expires_at": "2019-08-27T14:00:52.000+03:00",
-                "refresh": "eyJhbGciOiJIUzI1NiJ9.eyJleHAiOjE1NjY5MDM2NTIsInVpZCI6IjBlYjVmYWNkLWEzOGEtNDAxNS1hOTkyLTNjY2Q0NWYwYTE4YiIsImV4cCI6MTU2NzUwNDg1Mn0.hLKCoL8yYvakYWhp5PhDdkNTHZnEZgAaJ8R2krSw7jM",
-                "refresh_expires_at": "2019-09-03T13:00:52.000+03:00"
+                "csrf": "5ifEBDEEKhAZsBfLL7Ja/131Y/OzLdQgiIiRnTgO3IOPMvqftuTFBCl5mqHnW4fGZXiAltxyI3xnqmJHvsZKAg==",
+                "access": "eyJhbGciOiJIUzI1NiJ9.eyJleHAiOjE1NjY5MTcwODEsInVzZXJfaWQiOjEwMDYsInVpZCI6IjM2NjM5N2JlLWRkZDgtNDUxZS05YTZhLTYwNTE4NjIzNTVmNCIsImV4cCI6MTU2NjkxNzA4MSwicnVpZCI6IjQzZjkwMzM1LTE3MGUtNDRhOC04YzgzLTZiZDAyNjNiNjMwOCJ9.-Eig2f55ggSBCTy5EfSpMJX_DPeuCSYbXw9RJfntRu4",
+                "access_expires_at": "2019-08-27T17:44:41.000+03:00",
+                "refresh": "eyJhbGciOiJIUzI1NiJ9.eyJleHAiOjE1NjY5MTcwODEsInVpZCI6IjQzZjkwMzM1LTE3MGUtNDRhOC04YzgzLTZiZDAyNjNiNjMwOCIsImV4cCI6MTU2NzUxODI4MX0.ZuBhvUS5Jg5uhyer9kBQYB1GbtzOI9LDVZ9I2ByiRUA",
+                "refresh_expires_at": "2019-09-03T16:44:41.000+03:00"
               }
             }
 
@@ -128,7 +63,7 @@ Api todo list for RubyGarage course
                 "attributes": {
                   "type": "user",
                   "email": "lol@kek.ru",
-                  "password": "4t5uF675Rh"
+                  "password": "UzWrZvK025RtG"
                 }
               }
             }
@@ -141,30 +76,6 @@ Api todo list for RubyGarage course
 
 ### Destroy a session [DELETE /api/v1/users/session]
 
-
-+ Request delete session with valid token
-**DELETE**&nbsp;&nbsp;`/api/v1/users/session`
-
-    + Headers
-
-            Accept: application/vnd.api+json
-            Content-Type: application/vnd.api+json
-
-+ Response 204
-
-+ Request return unauthorized status
-**DELETE**&nbsp;&nbsp;`/api/v1/users/session`
-
-    + Headers
-
-            Accept: application/vnd.api+json
-            Content-Type: application/vnd.api+json
-
-+ Response 401
-
-    + Headers
-
-            Content-Type: text/html
 
 + Request returns no content status
 **DELETE**&nbsp;&nbsp;`/api/v1/users/session`
@@ -218,16 +129,16 @@ Api todo list for RubyGarage course
             {
               "data": [
                 {
-                  "id": "271",
-                  "type": "project",
+                  "id": "460",
+                  "type": "projects",
                   "attributes": {
-                    "name": "Carisa Auer II"
+                    "name": "Ezequiel Bechtelar"
                   },
                   "relationships": {
                     "user": {
                       "data": {
-                        "id": "748",
-                        "type": "user"
+                        "id": "991",
+                        "type": "users"
                       }
                     }
                   }
@@ -235,13 +146,27 @@ Api todo list for RubyGarage course
               ]
             }
 
++ Request returns unauthorized status
+**GET**&nbsp;&nbsp;`/api/v1/projects`
+
+    + Headers
+
+            Accept: application/vnd.api+json
+            Content-Type: application/vnd.api+json
+
++ Response 401
+
+    + Headers
+
+            Content-Type: text/html
+
 ### Get project [GET /api/v1/projects/:id]
 
 + Parameters
     + id: `1` (integer, required)
 
 + Request return one project
-**GET**&nbsp;&nbsp;`/api/v1/projects/272`
+**GET**&nbsp;&nbsp;`/api/v1/projects/462`
 
     + Headers
 
@@ -258,16 +183,16 @@ Api todo list for RubyGarage course
 
             {
               "data": {
-                "id": "272",
-                "type": "project",
+                "id": "462",
+                "type": "projects",
                 "attributes": {
-                  "name": "Teodoro Franecki"
+                  "name": "Nicky Bruen"
                 },
                 "relationships": {
                   "user": {
                     "data": {
-                      "id": "749",
-                      "type": "user"
+                      "id": "993",
+                      "type": "users"
                     }
                   }
                 }
@@ -283,6 +208,20 @@ Api todo list for RubyGarage course
             Content-Type: application/vnd.api+json
 
 + Response 404
+
+    + Headers
+
+            Content-Type: text/html
+
++ Request returns unauthorized status
+**GET**&nbsp;&nbsp;`/api/v1/projects/464`
+
+    + Headers
+
+            Accept: application/vnd.api+json
+            Content-Type: application/vnd.api+json
+
++ Response 401
 
     + Headers
 
@@ -308,7 +247,7 @@ Api todo list for RubyGarage course
                 "attributes": {
                   "type": "project",
                   "name": "lolkek",
-                  "user_id": 751
+                  "user_id": 996
                 }
               }
             }
@@ -323,23 +262,23 @@ Api todo list for RubyGarage course
 
             {
               "data": {
-                "id": "275",
-                "type": "project",
+                "id": "466",
+                "type": "projects",
                 "attributes": {
                   "name": "lolkek"
                 },
                 "relationships": {
                   "user": {
                     "data": {
-                      "id": "751",
-                      "type": "user"
+                      "id": "996",
+                      "type": "users"
                     }
                   }
                 }
               }
             }
 
-+ Request return status not found
++ Request returns errors for unprocessable entity
 **POST**&nbsp;&nbsp;`/api/v1/projects`
 
     + Headers
@@ -354,7 +293,7 @@ Api todo list for RubyGarage course
                 "attributes": {
                   "type": "project",
                   "name": "",
-                  "user_id": 752
+                  "user_id": 997
                 }
               }
             }
@@ -390,14 +329,28 @@ Api todo list for RubyGarage course
               ]
             }
 
++ Request returns unauthorized status
+**GET**&nbsp;&nbsp;`/api/v1/projects`
+
+    + Headers
+
+            Accept: application/vnd.api+json
+            Content-Type: application/vnd.api+json
+
++ Response 401
+
+    + Headers
+
+            Content-Type: text/html
+
 ### Update a project [PUT /api/v1/projects/:id]
 
 + Parameters
     + id: `1` (integer, required)
     + name: `New+project+name` (string, required)
 
-+ Request return one updated project
-**PATCH**&nbsp;&nbsp;`/api/v1/projects/277`
++ Request returns one updated project
+**PATCH**&nbsp;&nbsp;`/api/v1/projects/469`
 
     + Headers
 
@@ -411,7 +364,7 @@ Api todo list for RubyGarage course
                 "attributes": {
                   "type": "project",
                   "name": "lolkek",
-                  "user_id": 753
+                  "user_id": 999
                 }
               }
             }
@@ -426,24 +379,24 @@ Api todo list for RubyGarage course
 
             {
               "data": {
-                "id": "277",
-                "type": "project",
+                "id": "469",
+                "type": "projects",
                 "attributes": {
                   "name": "lolkek"
                 },
                 "relationships": {
                   "user": {
                     "data": {
-                      "id": "753",
-                      "type": "user"
+                      "id": "999",
+                      "type": "users"
                     }
                   }
                 }
               }
             }
 
-+ Request return errors for entitie
-**PATCH**&nbsp;&nbsp;`/api/v1/projects/278`
++ Request returns errors for unprocessable entity
+**PATCH**&nbsp;&nbsp;`/api/v1/projects/470`
 
     + Headers
 
@@ -457,7 +410,7 @@ Api todo list for RubyGarage course
                 "attributes": {
                   "type": "project",
                   "name": "",
-                  "user_id": 754
+                  "user_id": 1000
                 }
               }
             }
@@ -493,13 +446,27 @@ Api todo list for RubyGarage course
               ]
             }
 
++ Request returns unauthorized status
+**GET**&nbsp;&nbsp;`/api/v1/projects/471`
+
+    + Headers
+
+            Accept: application/vnd.api+json
+            Content-Type: application/vnd.api+json
+
++ Response 401
+
+    + Headers
+
+            Content-Type: text/html
+
 ### Delete a project [DELETE /api/v1/projects/:id]
 
 + Parameters
     + id: `1` (integer, required)
 
-+ Request return status success
-**DELETE**&nbsp;&nbsp;`/api/v1/projects/279`
++ Request returns no content status
+**DELETE**&nbsp;&nbsp;`/api/v1/projects/472`
 
     + Headers
 
@@ -508,7 +475,7 @@ Api todo list for RubyGarage course
 
 + Response 204
 
-+ Request return status not found
++ Request returns status not found
 **DELETE**&nbsp;&nbsp;`/api/v1/projects/100`
 
     + Headers
@@ -517,6 +484,20 @@ Api todo list for RubyGarage course
             Content-Type: application/vnd.api+json
 
 + Response 404
+
+    + Headers
+
+            Content-Type: text/html
+
++ Request returns unauthorized status
+**GET**&nbsp;&nbsp;`/api/v1/projects/474`
+
+    + Headers
+
+            Accept: application/vnd.api+json
+            Content-Type: application/vnd.api+json
+
++ Response 401
 
     + Headers
 
@@ -544,9 +525,9 @@ Api todo list for RubyGarage course
             {
               "data": {
                 "attributes": {
-                  "email": "omer@oharastiedemann.name",
-                  "password": "D02sRr09S6U38sHp",
-                  "password_confirmation": "D02sRr09S6U38sHp"
+                  "email": "lanora.feest@mertz.com",
+                  "password": "ZsUvUd8l",
+                  "password_confirmation": "ZsUvUd8l"
                 }
               }
             }
@@ -561,12 +542,12 @@ Api todo list for RubyGarage course
 
             {
               "data": {
-                "id": "760",
+                "id": "1005",
                 "type": "users",
                 "attributes": {
-                  "email": "omer@oharastiedemann.name",
-                  "created_at": "2019-08-27T10:00:52.807Z",
-                  "updated_at": "2019-08-27T10:00:52.807Z"
+                  "email": "lanora.feest@mertz.com",
+                  "created_at": "2019-08-27T13:44:41.208Z",
+                  "updated_at": "2019-08-27T13:44:41.208Z"
                 }
               }
             }
@@ -584,8 +565,8 @@ Api todo list for RubyGarage course
             {
               "data": {
                 "attributes": {
-                  "email": "akiko.hermann@gutmann.io",
-                  "password": "ZvP115L1Yc0h",
+                  "email": "daina@becker.org",
+                  "password": "68F7ExCqB9J3Jz4",
                   "password_confirmation": "lol"
                 }
               }
