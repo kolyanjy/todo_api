@@ -34,3 +34,6 @@ RSpec/MultipleExpectations:
 RSpec/ContextWording:
   Exclude:
     - 'spec/support/**/*'
+
+RSpec/NestedGroups:
+  Max: 4
