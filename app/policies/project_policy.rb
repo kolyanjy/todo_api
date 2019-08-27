@@ -4,9 +4,8 @@ class ProjectPolicy < ApplicationPolicy
       @scope.where(user: @user)
     end
   end
-  
-  def belongs_to_user?
+
+  def belongs_to_parent?
     @record.user_id == @user.id
   end
-
 end

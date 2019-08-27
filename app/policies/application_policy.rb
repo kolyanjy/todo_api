@@ -7,11 +7,11 @@ class ApplicationPolicy
   end
 
   def index?
-    belongs_to_user?
+    belongs_to_parent?
   end
 
   def show?
-    belongs_to_user?
+    belongs_to_parent?
   end
 
   def create?
@@ -23,7 +23,7 @@ class ApplicationPolicy
   end
 
   def update?
-    belongs_to_user?
+    belongs_to_parent?
   end
 
   def edit?
@@ -31,7 +31,7 @@ class ApplicationPolicy
   end
 
   def destroy?
-    belongs_to_user?
+    belongs_to_parent?
   end
 
   class Scope
@@ -40,10 +40,6 @@ class ApplicationPolicy
     def initialize(user, scope)
       @user = user
       @scope = scope
-    end
-
-    def resolve
-      scope.all
     end
   end
 end

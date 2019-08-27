@@ -12,6 +12,12 @@ RSpec.describe 'Projects', type: :request do
       expect(status).to eq(200)
       expect(response).to match_response_schema('projects/index')
     end
+
+    context 'when unauthorized user' do
+      before { get api_v1_projects_path, headers: default_headers.merge({lol: 'kek'}) }
+
+      include_examples 'unathorized'
+    end
   end
 
   describe 'GET /projects/:id' do
@@ -33,6 +39,12 @@ RSpec.describe 'Projects', type: :request do
         expect(status).to eq(404)
       end
     end
+
+    context 'when unauthorized user' do
+      before { get api_v1_project_path(project.id), headers: default_headers.merge({lol: 'kek'}) }
+
+      include_examples 'unathorized'
+    end
   end
 
   describe 'POST /projects' do
@@ -50,12 +62,17 @@ RSpec.describe 'Projects', type: :request do
       end
     end
 
-    context 'when project not found' do
+    context 'when failed create' do
       let(:params) { build_params({type: 'project', name: '', user_id: user.id }) }
 
-      it 'return status not found', :dox do
-        expect(response).to match_response_schema('errors/entitie_error')
-        expect(status).to eq(422)
+      context 'when project invalid' do
+        include_examples 'unprocessable entity'
+      end
+
+      context 'when unauthorized user' do
+        before { get api_v1_projects_path, headers: default_headers.merge({lol: 'kek'}) }
+
+        include_examples 'unathorized'
       end
     end
   end
@@ -69,18 +86,23 @@ RSpec.describe 'Projects', type: :request do
 
       let(:params) { build_params({type: 'project', name: 'lolkek', user_id: user.id }) }
 
-      it 'return one updated project', :dox do
+      it 'returns one updated project', :dox do
         expect(response).to match_response_schema('projects/update')
         expect(status).to eq(200)
       end
     end
-
-    context 'when project invalid' do
+    
+    context 'when failed update' do
       let(:params) { build_params({type: 'project', name: '', user_id: user.id }) }
 
-      it 'return errors for entitie', :dox do
-        expect(response).to match_response_schema('errors/entitie_error')
-        expect(status).to eq(422)
+      context 'when project invalid' do
+        include_examples 'unprocessable entity'
+      end
+
+      context 'when unauthorized user' do
+        before { get api_v1_project_path(project.id), headers: default_headers.merge({lol: 'kek'}) }
+
+        include_examples 'unathorized'
       end
     end
   end
@@ -88,18 +110,24 @@ RSpec.describe 'Projects', type: :request do
   describe 'DELETE /projects/:id' do
     include Docs::V1::Projects::Destroy
 
-    context 'when success update project' do
+    context 'when success delete project' do
       before { delete api_v1_project_path(project.id), headers: default_headers.merge(auth_header) }
-      it 'return status success', :dox do
-        expect(status).to eq(204)
-      end
+
+      include_examples 'no content'
     end
 
     context 'when project not found' do
       before { delete api_v1_project_path(100), headers: default_headers.merge(auth_header) }
-      it 'return status not found', :dox do
+
+      it 'returns status not found', :dox do
         expect(status).to eq(404)
       end
+    end
+
+    context 'when unauthorized user' do
+      before { get api_v1_project_path(project.id), headers: default_headers.merge({lol: 'kek'}) }
+
+      include_examples 'unathorized'
     end
   end
 end
