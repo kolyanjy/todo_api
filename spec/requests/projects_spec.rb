@@ -14,7 +14,7 @@ RSpec.describe 'Projects', type: :request do
     end
 
     context 'when unauthorized user' do
-      before { get api_v1_projects_path, headers: default_headers.merge({lol: 'kek'}) }
+      before { get api_v1_projects_path, headers: default_headers.merge(lol: 'kek') }
 
       include_examples 'unathorized'
     end
@@ -41,7 +41,7 @@ RSpec.describe 'Projects', type: :request do
     end
 
     context 'when unauthorized user' do
-      before { get api_v1_project_path(project.id), headers: default_headers.merge({lol: 'kek'}) }
+      before { get api_v1_project_path(project.id), headers: default_headers.merge(lol: 'kek') }
 
       include_examples 'unathorized'
     end
@@ -53,8 +53,7 @@ RSpec.describe 'Projects', type: :request do
     before { post api_v1_projects_path, params: params, headers: default_headers.merge(auth_header) }
 
     context 'when success create project' do
-
-      let(:params) { build_params({type: 'project', name: 'lolkek', user_id: user.id }) }
+      let(:params) { build_params(type: 'project', name: 'lolkek', user_id: user.id) }
 
       it 'return one project', :dox do
         expect(response).to match_response_schema('projects/create')
@@ -63,14 +62,14 @@ RSpec.describe 'Projects', type: :request do
     end
 
     context 'when failed create' do
-      let(:params) { build_params({type: 'project', name: '', user_id: user.id }) }
+      let(:params) { build_params(type: 'project', name: '', user_id: user.id) }
 
-      context 'when project invalid' do
+      context 'when project invalid' do # rubocop:disable RSpec/NestedGroups
         include_examples 'unprocessable entity'
       end
 
-      context 'when unauthorized user' do
-        before { get api_v1_projects_path, headers: default_headers.merge({lol: 'kek'}) }
+      context 'when unauthorized user' do # rubocop:disable RSpec/NestedGroups
+        before { get api_v1_projects_path, headers: default_headers.merge(lol: 'kek') }
 
         include_examples 'unathorized'
       end
@@ -83,24 +82,23 @@ RSpec.describe 'Projects', type: :request do
     before { patch api_v1_project_path(project.id), params: params, headers: default_headers.merge(auth_header) }
 
     context 'when success update project' do
-
-      let(:params) { build_params({type: 'project', name: 'lolkek', user_id: user.id }) }
+      let(:params) { build_params(type: 'project', name: 'lolkek', user_id: user.id) }
 
       it 'returns one updated project', :dox do
         expect(response).to match_response_schema('projects/update')
         expect(status).to eq(200)
       end
     end
-    
-    context 'when failed update' do
-      let(:params) { build_params({type: 'project', name: '', user_id: user.id }) }
 
-      context 'when project invalid' do
+    context 'when failed update' do
+      let(:params) { build_params(type: 'project', name: '', user_id: user.id) }
+
+      context 'when project invalid' do # rubocop:disable RSpec/NestedGroups
         include_examples 'unprocessable entity'
       end
 
-      context 'when unauthorized user' do
-        before { get api_v1_project_path(project.id), headers: default_headers.merge({lol: 'kek'}) }
+      context 'when unauthorized user' do # rubocop:disable RSpec/NestedGroups
+        before { get api_v1_project_path(project.id), headers: default_headers.merge(lol: 'kek') }
 
         include_examples 'unathorized'
       end
@@ -125,7 +123,7 @@ RSpec.describe 'Projects', type: :request do
     end
 
     context 'when unauthorized user' do
-      before { get api_v1_project_path(project.id), headers: default_headers.merge({lol: 'kek'}) }
+      before { get api_v1_project_path(project.id), headers: default_headers.merge(lol: 'kek') }
 
       include_examples 'unathorized'
     end
