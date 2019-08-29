@@ -10,7 +10,7 @@ RSpec.describe 'tasks', type: :request do
 
     before { get api_v1_project_tasks_path(project.id), headers: default_headers.merge(auth_header) }
 
-    it 'returns collection of project`s tasks', :dox do
+    it "returns collection of project's tasks", :dox do
       expect(status).to eq(200)
       expect(response).to match_response_schema('tasks/collection_of_entities')
       expect(body).not_to include(another_task.name)
@@ -120,7 +120,7 @@ RSpec.describe 'tasks', type: :request do
         include_examples 'not found'
       end
 
-      context 'when the user tries update not his task' do
+      context 'when the user tries to update not his task' do
         let(:params) { build_params(type: 'task', name: 'asdasdasd') }
 
         before do
@@ -153,7 +153,7 @@ RSpec.describe 'tasks', type: :request do
       include_examples 'unathorized'
     end
 
-    context 'when the user tries delete not his task' do
+    context 'when the user tries to delete not his task' do
       let(:params) { build_params(type: 'task', name: 'asdasdasd') }
 
       before do
@@ -186,7 +186,7 @@ RSpec.describe 'tasks', type: :request do
       include_examples 'not found'
     end
 
-    context 'when the user tries to get not his task' do
+    context 'when the user tries to update not his task' do
       before { patch position_up_api_v1_task_path(another_task.id), headers: default_headers.merge(auth_header) }
 
       include_examples 'not found'
@@ -221,7 +221,7 @@ RSpec.describe 'tasks', type: :request do
       include_examples 'not found'
     end
 
-    context 'when the user tries to get not his task' do
+    context 'when the user tries to update not his task' do
       before { patch position_down_api_v1_task_path(another_task.id), headers: default_headers.merge(auth_header) }
 
       include_examples 'not found'
