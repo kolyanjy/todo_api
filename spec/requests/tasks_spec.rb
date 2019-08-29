@@ -2,7 +2,7 @@ RSpec.describe 'tasks', type: :request do
   include Docs::V1::Tasks::Api
 
   let!(:project) { create(:project, user: user) }
-  let!(:task) { create(:task, project: project) }
+  let!(:task) { create(:task, project: project, position: 2) }
   let!(:another_task) { create(:task) }
 
   describe 'GET projects/:project_id/tasks' do
@@ -60,11 +60,13 @@ RSpec.describe 'tasks', type: :request do
     before { post api_v1_project_tasks_path(project.id), params: params, headers: default_headers.merge(auth_header) }
 
     context 'when success create task' do
-      let(:params) { build_params(type: 'task', **attributes_for(:task)) }
+      let(:task_attrs) { attributes_for(:task) }
+      let(:params) { build_params(type: 'task', **task_attrs) }
 
       it 'returns one task', :dox do
         expect(response).to match_response_schema('tasks/one_entity')
         expect(status).to eq(201)
+        expect(Task.last).to have_attributes(task_attrs)
       end
     end
 
@@ -89,10 +91,12 @@ RSpec.describe 'tasks', type: :request do
     before { patch api_v1_task_path(task.id), params: params, headers: default_headers.merge(auth_header) }
 
     context 'when success update task' do
-      let(:params) { build_params(type: 'task', **attributes_for(:task)) }
+      let(:new_name) { 'lolkek' }
+      let(:params) { build_params(type: 'task', name: new_name) }
 
       it 'returns one updated task', :dox do
         expect(response).to match_response_schema('tasks/one_entity')
+        expect(task.reload.name).to eq(new_name)
         expect(status).to eq(200)
       end
     end
@@ -141,7 +145,7 @@ RSpec.describe 'tasks', type: :request do
       before { delete api_v1_task_path(0), headers: default_headers.merge(auth_header) }
 
       include_examples 'not found'
-    atch
+    end
 
     context 'when unauthorized user' do
       before { delete api_v1_task_path(task.id), headers: default_headers }
@@ -163,22 +167,70 @@ RSpec.describe 'tasks', type: :request do
   describe 'PATCH  /api/v1/tasks/:id/position_up' do
     include Docs::V1::Tasks::PositionUp
 
-    before { patch position_up_api_v1_task_path(task.id), headers: default_headers.merge(auth_header) }
+    let!(:position_before) { task.position }
+
+    before do
+      create(:task, position: 1, project: project)
+      patch position_up_api_v1_task_path(task.id), headers: default_headers.merge(auth_header)
+    end
 
     it 'returns task with changed position', :dox do
       expect(response).to match_response_schema('tasks/one_entity')
+      expect(task.reload.position).to eq(position_before - 1)
       expect(status).to eq(200)
+    end
+
+    context 'when task not found' do
+      before { patch position_up_api_v1_task_path(0), headers: default_headers.merge(auth_header) }
+
+      include_examples 'not found'
+    end
+
+    context 'when the user tries to get not his task' do
+      before { patch position_up_api_v1_task_path(another_task.id), headers: default_headers.merge(auth_header) }
+
+      include_examples 'not found'
+    end
+
+    context 'when unauthorized user' do
+      before { patch position_up_api_v1_task_path(task.id), headers: default_headers }
+
+      include_examples 'unathorized'
     end
   end
 
   describe 'PATCH  /api/v1/tasks/:id/position_down' do
     include Docs::V1::Tasks::PositionDown
 
-    before { patch position_down_api_v1_task_path(task.id), headers: default_headers.merge(auth_header) }
+    let!(:position_before) { task.position }
+
+    before do
+      create(:task, position: 3, project: project)
+      patch position_down_api_v1_task_path(task.id), headers: default_headers.merge(auth_header)
+    end
 
     it 'returns task with changed position', :dox do
       expect(response).to match_response_schema('tasks/one_entity')
+      expect(task.reload.position).to eq(position_before + 1)
       expect(status).to eq(200)
+    end
+
+    context 'when task not found' do
+      before { patch position_down_api_v1_task_path(0), headers: default_headers.merge(auth_header) }
+
+      include_examples 'not found'
+    end
+
+    context 'when the user tries to get not his task' do
+      before { patch position_down_api_v1_task_path(another_task.id), headers: default_headers.merge(auth_header) }
+
+      include_examples 'not found'
+    end
+
+    context 'when unauthorized user' do
+      before { patch position_down_api_v1_task_path(task.id), headers: default_headers }
+
+      include_examples 'unathorized'
     end
   end
 end
