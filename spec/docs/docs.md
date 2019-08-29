@@ -23,8 +23,8 @@ Api todo list for RubyGarage course
               "data": {
                 "attributes": {
                   "type": "user",
-                  "email": "darlene_ullrich@lubowitzkris.org",
-                  "password": "FrCaFi55A"
+                  "email": "cordell@andersonsmitham.org",
+                  "password": "JgLwCw6oN2"
                 }
               }
             }
@@ -40,11 +40,11 @@ Api todo list for RubyGarage course
             {
               "data": null,
               "meta": {
-                "csrf": "sBvk9wlb00LAlvum7dyRcT08VlE6s8MVa57hPXY22G00Q9+ZBrPEfarjNAl8sV1HLwDeE2qpjTvmZg2kJS9BMQ==",
-                "access": "eyJhbGciOiJIUzI1NiJ9.eyJleHAiOjE1NjY5MjA4MjMsInVzZXJfaWQiOjExNTAsInVpZCI6ImM5YzY5ZGYzLTQ2NzYtNDg3Zi05MDg2LTk0MjA4YjUzOWNiMSIsImV4cCI6MTU2NjkyMDgyMywicnVpZCI6ImU3YmFhMjhhLTMzODgtNGI2Yy04MDE0LTY4M2E4MGUxZDFhMyJ9.jXv25pkWG1NFP9G34frzWwXndEzDydOh7t67mkRV6Vs",
-                "access_expires_at": "2019-08-27T18:47:03.000+03:00",
-                "refresh": "eyJhbGciOiJIUzI1NiJ9.eyJleHAiOjE1NjY5MjA4MjMsInVpZCI6ImU3YmFhMjhhLTMzODgtNGI2Yy04MDE0LTY4M2E4MGUxZDFhMyIsImV4cCI6MTU2NzUyMjAyM30.TiKBH7ZGNOBQMHMx0MX1jihhDgVDVILL3gcfDHr9e6w",
-                "refresh_expires_at": "2019-09-03T17:47:03.000+03:00"
+                "csrf": "XqfAx3kDk0/RwQhYmwuUZcryolojh1rsRcjCtM1HkJWm4TgMCOn/LOVatqkWYm/sY6GS6tdZvk5g6uLBwLLoIA==",
+                "access": "eyJhbGciOiJIUzI1NiJ9.eyJleHAiOjE1NjcwMTg4NDgsInVzZXJfaWQiOjY3OCwidWlkIjoiM2YxZWUxYzYtMTE1OC00OWQyLWIzNWQtZDE4OTI4MzI4YjIzIiwiZXhwIjoxNTY3MDE4ODQ4LCJydWlkIjoiOTVhMTMyOWItMWZjNi00OGJkLWE4NmItOWQ4YjU2ZjhiNmY5In0.RAH9MWxwjnstH-I8xIC8EG3eeg5btu7gXyhmkz0CuUE",
+                "access_expires_at": "2019-08-28T22:00:48.000+03:00",
+                "refresh": "eyJhbGciOiJIUzI1NiJ9.eyJleHAiOjE1NjcwMTg4NDgsInVpZCI6Ijk1YTEzMjliLTFmYzYtNDhiZC1hODZiLTlkOGI1NmY4YjZmOSIsImV4cCI6MTU2NzYyMDA0OH0._4H82SzmczQWyL0j216wObUZo1PhH21RtkEUDiJ_l-Y",
+                "refresh_expires_at": "2019-09-04T21:00:48.000+03:00"
               }
             }
 
@@ -63,7 +63,7 @@ Api todo list for RubyGarage course
                 "attributes": {
                   "type": "user",
                   "email": "lol@kek.ru",
-                  "password": "FqY40eI5In7"
+                  "password": "5x2xYs9pYx4x0n1"
                 }
               }
             }
@@ -110,7 +110,7 @@ Api todo list for RubyGarage course
 ### Get projects [GET /api/v1/projects]
 
 
-+ Request returns collection of projects
++ Request returns collection of user`s projects
 **GET**&nbsp;&nbsp;`/api/v1/projects`
 
     + Headers
@@ -129,15 +129,15 @@ Api todo list for RubyGarage course
             {
               "data": [
                 {
-                  "id": "579",
+                  "id": "593",
                   "type": "projects",
                   "attributes": {
-                    "name": "Jerri Cruickshank"
+                    "name": "Fe Schuster"
                   },
                   "relationships": {
                     "user": {
                       "data": {
-                        "id": "1135",
+                        "id": "641",
                         "type": "users"
                       }
                     }
@@ -163,10 +163,10 @@ Api todo list for RubyGarage course
 ### Get project [GET /api/v1/projects/:id]
 
 + Parameters
-    + id: `581` (number, required)
+    + id: `597` (number, required)
 
 + Request returns one project
-**GET**&nbsp;&nbsp;`/api/v1/projects/581`
+**GET**&nbsp;&nbsp;`/api/v1/projects/597`
 
     + Headers
 
@@ -183,15 +183,15 @@ Api todo list for RubyGarage course
 
             {
               "data": {
-                "id": "581",
+                "id": "597",
                 "type": "projects",
                 "attributes": {
-                  "name": "Mr. Shannon Barton"
+                  "name": "Erwin Kunde"
                 },
                 "relationships": {
                   "user": {
                     "data": {
-                      "id": "1137",
+                      "id": "645",
                       "type": "users"
                     }
                   }
@@ -213,8 +213,22 @@ Api todo list for RubyGarage course
 
             Content-Type: text/html
 
++ Request returns status not found
+**GET**&nbsp;&nbsp;`/api/v1/projects/602`
+
+    + Headers
+
+            Accept: application/vnd.api+json
+            Content-Type: application/vnd.api+json
+
++ Response 404
+
+    + Headers
+
+            Content-Type: application/vnd.api+json
+
 + Request returns unauthorized status
-**GET**&nbsp;&nbsp;`/api/v1/projects/583`
+**GET**&nbsp;&nbsp;`/api/v1/projects/603`
 
     + Headers
 
@@ -244,7 +258,7 @@ Api todo list for RubyGarage course
               "data": {
                 "attributes": {
                   "type": "project",
-                  "name": "Ivelisse Romaguera"
+                  "name": "Kasi Willms"
                 }
               }
             }
@@ -259,15 +273,15 @@ Api todo list for RubyGarage course
 
             {
               "data": {
-                "id": "585",
+                "id": "607",
                 "type": "projects",
                 "attributes": {
-                  "name": "Ivelisse Romaguera"
+                  "name": "Kasi Willms"
                 },
                 "relationships": {
                   "user": {
                     "data": {
-                      "id": "1140",
+                      "id": "653",
                       "type": "users"
                     }
                   }
@@ -342,10 +356,10 @@ Api todo list for RubyGarage course
 ### Update a project [PUT /api/v1/projects/:id]
 
 + Parameters
-    + id: `588` (number, required)
+    + id: `612` (number, required)
 
 + Request returns one updated project
-**PATCH**&nbsp;&nbsp;`/api/v1/projects/588`
+**PATCH**&nbsp;&nbsp;`/api/v1/projects/612`
 
     + Headers
 
@@ -358,7 +372,7 @@ Api todo list for RubyGarage course
               "data": {
                 "attributes": {
                   "type": "project",
-                  "name": "Donnie Lindgren IV"
+                  "name": "Gilda Hettinger"
                 }
               }
             }
@@ -373,15 +387,15 @@ Api todo list for RubyGarage course
 
             {
               "data": {
-                "id": "588",
+                "id": "612",
                 "type": "projects",
                 "attributes": {
-                  "name": "Donnie Lindgren IV"
+                  "name": "Gilda Hettinger"
                 },
                 "relationships": {
                   "user": {
                     "data": {
-                      "id": "1143",
+                      "id": "659",
                       "type": "users"
                     }
                   }
@@ -390,7 +404,7 @@ Api todo list for RubyGarage course
             }
 
 + Request returns errors for unprocessable entity
-**PATCH**&nbsp;&nbsp;`/api/v1/projects/589`
+**PATCH**&nbsp;&nbsp;`/api/v1/projects/614`
 
     + Headers
 
@@ -440,7 +454,7 @@ Api todo list for RubyGarage course
             }
 
 + Request returns unauthorized status
-**GET**&nbsp;&nbsp;`/api/v1/projects/590`
+**GET**&nbsp;&nbsp;`/api/v1/projects/616`
 
     + Headers
 
@@ -453,13 +467,52 @@ Api todo list for RubyGarage course
 
             Content-Type: text/html
 
++ Request returns status not found
+**GET**&nbsp;&nbsp;`/api/v1/projects/0`
+
+    + Headers
+
+            Accept: application/vnd.api+json
+            Content-Type: application/vnd.api+json
+
++ Response 404
+
+    + Headers
+
+            Content-Type: text/html
+
++ Request returns status not found
+**PATCH**&nbsp;&nbsp;`/api/v1/projects/621`
+
+    + Headers
+
+            Accept: application/vnd.api+json
+            Content-Type: application/vnd.api+json
+
+    + Body
+
+            {
+              "data": {
+                "attributes": {
+                  "type": "project",
+                  "name": "asdasdasd"
+                }
+              }
+            }
+
++ Response 404
+
+    + Headers
+
+            Content-Type: application/vnd.api+json
+
 ### Delete a project [DELETE /api/v1/projects/:id]
 
 + Parameters
-    + id: `591` (number, required)
+    + id: `622` (number, required)
 
 + Request returns no content status
-**DELETE**&nbsp;&nbsp;`/api/v1/projects/591`
+**DELETE**&nbsp;&nbsp;`/api/v1/projects/622`
 
     + Headers
 
@@ -483,7 +536,7 @@ Api todo list for RubyGarage course
             Content-Type: text/html
 
 + Request returns unauthorized status
-**GET**&nbsp;&nbsp;`/api/v1/projects/593`
+**GET**&nbsp;&nbsp;`/api/v1/projects/626`
 
     + Headers
 
@@ -495,6 +548,31 @@ Api todo list for RubyGarage course
     + Headers
 
             Content-Type: text/html
+
++ Request returns status not found
+**DELETE**&nbsp;&nbsp;`/api/v1/projects/629`
+
+    + Headers
+
+            Accept: application/vnd.api+json
+            Content-Type: application/vnd.api+json
+
+    + Body
+
+            {
+              "data": {
+                "attributes": {
+                  "type": "project",
+                  "name": "asdasdasd"
+                }
+              }
+            }
+
++ Response 404
+
+    + Headers
+
+            Content-Type: application/vnd.api+json
 
 # Group Registration
 
@@ -518,9 +596,9 @@ Api todo list for RubyGarage course
             {
               "data": {
                 "attributes": {
-                  "email": "jong_dicki@shanahanschamberger.co",
-                  "password": "MfXwLkQ7",
-                  "password_confirmation": "MfXwLkQ7"
+                  "email": "tyrell@gutkowski.info",
+                  "password": "Vy303sZhA",
+                  "password_confirmation": "Vy303sZhA"
                 }
               }
             }
@@ -535,12 +613,12 @@ Api todo list for RubyGarage course
 
             {
               "data": {
-                "id": "1149",
+                "id": "677",
                 "type": "users",
                 "attributes": {
-                  "email": "jong_dicki@shanahanschamberger.co",
-                  "created_at": "2019-08-27T14:47:03.133Z",
-                  "updated_at": "2019-08-27T14:47:03.133Z"
+                  "email": "tyrell@gutkowski.info",
+                  "created_at": "2019-08-28T18:00:48.197Z",
+                  "updated_at": "2019-08-28T18:00:48.197Z"
                 }
               }
             }
@@ -558,8 +636,8 @@ Api todo list for RubyGarage course
             {
               "data": {
                 "attributes": {
-                  "email": "michaele.prosacco@bogisich.co",
-                  "password": "0rOdOgGoHq6m1",
+                  "email": "theron@hodkiewiczschamberger.org",
+                  "password": "Z9NyRyRsJ8JyL7",
                   "password_confirmation": "lol"
                 }
               }
