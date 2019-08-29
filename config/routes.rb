@@ -8,8 +8,8 @@ Rails.application.routes.draw do
       resources :projects, shallow: true do
         resources :tasks do
           member do
-            patch 'position_up', to: 'tasks#position_up'
-            patch 'position_down', to: 'tasks#position_down'
+            patch 'position_up'
+            patch 'position_down'
           end
         end
       end

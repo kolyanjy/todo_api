@@ -1,8 +1,9 @@
 RSpec.describe 'tasks', type: :request do
   include Docs::V1::Tasks::Api
+  
   let!(:project) { create(:project, user: user) }
   let!(:task) { create(:task, project: project) }
-  let!(:anouther_task) { create(:task) }
+  let!(:another_task) { create(:task) }
 
   describe 'GET /tasks' do
     include Docs::V1::Tasks::Index
@@ -12,7 +13,7 @@ RSpec.describe 'tasks', type: :request do
     it 'returns collection of project`s tasks', :dox do
       expect(status).to eq(200)
       expect(response).to match_response_schema('tasks/collection_of_entities')
-      expect(body).not_to include(anouther_task.name)
+      expect(body).not_to include(another_task.name)
     end
 
     context 'when unauthorized user' do
@@ -41,7 +42,7 @@ RSpec.describe 'tasks', type: :request do
     end
 
     context 'when the user tries to get not his task' do
-      before { get api_v1_task_path(anouther_task.id), headers: default_headers.merge(auth_header) }
+      before { get api_v1_task_path(another_task.id), headers: default_headers.merge(auth_header) }
 
       include_examples 'not found'
     end
@@ -119,7 +120,7 @@ RSpec.describe 'tasks', type: :request do
         let(:params) { build_params(type: 'task', name: 'asdasdasd') }
 
         before do
-          patch api_v1_task_path(anouther_task.id), params: params, headers: default_headers.merge(auth_header)
+          patch api_v1_task_path(another_task.id), params: params, headers: default_headers.merge(auth_header)
         end
 
         include_examples 'not found'
@@ -152,7 +153,7 @@ RSpec.describe 'tasks', type: :request do
       let(:params) { build_params(type: 'task', name: 'asdasdasd') }
 
       before do
-        delete api_v1_task_path(anouther_task.id), params: params, headers: default_headers.merge(auth_header)
+        delete api_v1_task_path(another_task.id), params: params, headers: default_headers.merge(auth_header)
       end
 
       include_examples 'not found'
