@@ -6,6 +6,7 @@ class TaskPolicy < ApplicationPolicy
   def position_down?
     belongs_to_parent?
   end
+
   private
 
   def belongs_to_parent?
