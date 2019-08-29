@@ -11,7 +11,7 @@ RSpec.describe 'Projects', type: :request do
 
     it 'returns collection of user`s projects', :dox do
       expect(status).to eq(200)
-      expect(response).to match_response_schema('projects/index')
+      expect(response).to match_response_schema('projects/collection_of_entities')
       expect(body).not_to include(anouther_project.name)
     end
 
@@ -29,7 +29,7 @@ RSpec.describe 'Projects', type: :request do
       before { get api_v1_project_path(project.id), headers: default_headers.merge(auth_header) }
 
       it 'returns one project', :dox do
-        expect(response).to match_response_schema('projects/show')
+        expect(response).to match_response_schema('projects/one_entity')
         expect(status).to eq(200)
       end
     end
@@ -62,7 +62,7 @@ RSpec.describe 'Projects', type: :request do
       let(:params) { build_params(type: 'project', **attributes_for(:project)) }
 
       it 'returns one project', :dox do
-        expect(response).to match_response_schema('projects/create')
+        expect(response).to match_response_schema('projects/one_entity')
         expect(status).to eq(201)
       end
     end
@@ -91,7 +91,7 @@ RSpec.describe 'Projects', type: :request do
       let(:params) { build_params(type: 'project', **attributes_for(:project)) }
 
       it 'returns one updated project', :dox do
-        expect(response).to match_response_schema('projects/update')
+        expect(response).to match_response_schema('projects/one_entity')
         expect(status).to eq(200)
       end
     end
