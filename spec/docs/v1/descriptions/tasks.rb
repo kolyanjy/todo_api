@@ -38,13 +38,6 @@ module Docs
         end
       end
 
-      document :complete do
-        action 'Complete a task' do
-          path '/api/v1/tasks/:id/complete'
-          verb 'PATCH'
-        end
-      end
-
       document :position_up do
         action 'Change up position of task' do
           path '/api/v1/tasks/:id/position_up'
@@ -54,7 +47,7 @@ module Docs
 
       document :position_down do
         action 'Change down position of task' do
-          path '/api/v1/tasks/:id/position_up'
+          path '/api/v1/tasks/:id/position_down'
           verb 'PATCH'
         end
       end

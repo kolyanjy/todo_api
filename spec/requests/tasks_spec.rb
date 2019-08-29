@@ -164,7 +164,7 @@ RSpec.describe 'tasks', type: :request do
 
     before { patch position_up_api_v1_task_path(task.id), headers: default_headers.merge(auth_header) }
 
-    it 'returns task with changed position' do
+    it 'returns task with changed position', :dox do
       expect(response).to match_response_schema('tasks/one_entity')
       expect(status).to eq(200)
     end
@@ -175,7 +175,7 @@ RSpec.describe 'tasks', type: :request do
 
     before { patch position_down_api_v1_task_path(task.id), headers: default_headers.merge(auth_header) }
 
-    it 'returns task with changed position' do
+    it 'returns task with changed position', :dox do
       expect(response).to match_response_schema('tasks/one_entity')
       expect(status).to eq(200)
     end
