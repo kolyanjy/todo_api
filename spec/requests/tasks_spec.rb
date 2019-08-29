@@ -1,11 +1,11 @@
 RSpec.describe 'tasks', type: :request do
   include Docs::V1::Tasks::Api
-  
+
   let!(:project) { create(:project, user: user) }
   let!(:task) { create(:task, project: project) }
   let!(:another_task) { create(:task) }
 
-  describe 'GET /tasks' do
+  describe 'GET projects/:project_id/tasks' do
     include Docs::V1::Tasks::Index
 
     before { get api_v1_project_tasks_path(project.id), headers: default_headers.merge(auth_header) }
@@ -76,7 +76,7 @@ RSpec.describe 'tasks', type: :request do
       end
 
       context 'when unauthorized user' do
-        before { get api_v1_project_tasks_path(project.id), headers: default_headers }
+        before { post api_v1_project_tasks_path(project.id), headers: default_headers }
 
         include_examples 'unathorized'
       end
@@ -105,13 +105,13 @@ RSpec.describe 'tasks', type: :request do
       end
 
       context 'when unauthorized user' do
-        before { get api_v1_task_path(task.id), headers: default_headers }
+        before { patch api_v1_task_path(task.id), headers: default_headers }
 
         include_examples 'unathorized'
       end
 
       context 'when task not found' do
-        before { get api_v1_task_path(0), headers: default_headers.merge(auth_header) }
+        before { patch api_v1_task_path(0), headers: default_headers.merge(auth_header) }
 
         include_examples 'not found'
       end
@@ -141,10 +141,10 @@ RSpec.describe 'tasks', type: :request do
       before { delete api_v1_task_path(0), headers: default_headers.merge(auth_header) }
 
       include_examples 'not found'
-    end
+    atch
 
     context 'when unauthorized user' do
-      before { get api_v1_task_path(task.id), headers: default_headers }
+      before { delete api_v1_task_path(task.id), headers: default_headers }
 
       include_examples 'unathorized'
     end
