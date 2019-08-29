@@ -15,7 +15,7 @@ class ApplicationPolicy
   end
 
   def create?
-    false
+    belongs_to_parent?
   end
 
   def update?
