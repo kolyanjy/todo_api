@@ -11,6 +11,7 @@ Rails.application.routes.draw do
             patch 'position_up'
             patch 'position_down'
           end
+          resources :comments, only: %i[index show destroy create]
         end
       end
     end
