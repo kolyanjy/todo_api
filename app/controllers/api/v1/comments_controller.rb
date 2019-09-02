@@ -13,6 +13,7 @@ module Api
       end
 
       def create
+        binding.pry
         comment = authorize(@task).comments.build(comment_params)
         if comment.save
           render jsonapi: comment, status: 201
@@ -41,4 +42,3 @@ module Api
     end
   end
 end
-

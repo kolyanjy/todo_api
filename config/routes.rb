@@ -15,5 +15,6 @@ Rails.application.routes.draw do
         end
       end
     end
+    mount ImageUploader.upload_endpoint(:cache) => "/images/upload"
   end
 end

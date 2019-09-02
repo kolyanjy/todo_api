@@ -30,7 +30,7 @@ module Docs
           verb 'POST'
         end
       end
-      
+
       document :destroy do
         action 'Delete a comment' do
           path '/api/v1/comments/:id'
