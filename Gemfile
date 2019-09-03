@@ -23,10 +23,9 @@ gem 'pundit'
 gem 'pg'
 gem 'redis'
 
-#uploads
-gem 'shrine', '~> 2.19.0'
-gem "uppy-s3_multipart", ">= 0.3.2"
-gem 'aws-sdk-s3', '~> 1.14'
+# uploads
+gem 'shrine'
+gem 'aws-sdk-s3'
 
 # system
 gem 'bootsnap', '>= 1.1.0', require: false

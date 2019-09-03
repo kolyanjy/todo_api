@@ -45,7 +45,7 @@
           "title": "The Attributes Schema",
           "required": [
             "name",
-            "image"
+            "image_url"
           ],
           "properties": {
             "name": {
@@ -58,13 +58,13 @@
               ],
               "pattern": "^(.*)$"
             },
-            "image": {
-              "$id": "#/properties/data/properties/attributes/properties/image",
-              "type": "string",
-              "title": "The Image Schema",
-              "default": "",
+            "image_url": {
+              "$id": "#/properties/data/items/properties/attributes/properties/image_url",
+              "type": "null",
+              "title": "The Image_url Schema",
+              "default": null,
               "examples": [
-                "lolkek_image"
+                null
               ]
             }
           }

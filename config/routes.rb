@@ -14,7 +14,11 @@ Rails.application.routes.draw do
           resources :comments, only: %i[index show destroy create]
         end
       end
+      if Rails.configuration.upload_server == :s3
+        mount ImageUploader.presign_endpoint(:cache), at: "/s3/params"
+      else
+        mount ImageUploader.upload_endpoint(:cache), at: "/images/upload"
+      end
     end
-    mount ImageUploader.upload_endpoint(:cache) => "/images/upload"
   end
 end

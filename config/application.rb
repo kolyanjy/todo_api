@@ -22,9 +22,7 @@ module TodoApi
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 5.2
 
-    config.upload_server = if ENV["UPLOAD_SERVER"].present?
-      ENV["UPLOAD_SERVER"].to_sym
-    elsif Rails.env.production?
+    config.upload_server = if Rails.env.production?
       :s3
     else
       :app
