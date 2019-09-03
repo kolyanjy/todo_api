@@ -5,7 +5,7 @@ class CreateTasks < ActiveRecord::Migration[5.2]
       t.boolean :complete, default: false, null: false
       t.datetime :deadline
       t.integer :position
-      t.integer :comments_count
+      t.integer :comments_count, default: 0
       t.references :project, foreign_key: true
       t.timestamps
     end

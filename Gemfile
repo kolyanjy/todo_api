@@ -23,6 +23,10 @@ gem 'pundit'
 gem 'pg'
 gem 'redis'
 
+# uploads
+gem 'aws-sdk-s3'
+gem 'shrine'
+
 # system
 gem 'bootsnap', '>= 1.1.0', require: false
 gem 'puma', '~> 3.11'
