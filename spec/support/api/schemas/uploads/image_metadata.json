@@ -1,0 +1,75 @@
+{
+    "definitions": {},
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "$id": "http://example.com/root.json",
+    "type": "object",
+    "title": "The Root Schema",
+    "required": [
+        "id",
+        "storage",
+        "metadata"
+    ],
+    "properties": {
+        "id": {
+            "$id": "#/properties/id",
+            "type": "string",
+            "title": "The Id Schema",
+            "default": "",
+            "examples": [
+                "550b04c9933e44a9d616ebd8a408f99f.png"
+            ],
+            "pattern": "^(.*)$"
+        },
+        "storage": {
+            "$id": "#/properties/storage",
+            "type": "string",
+            "title": "The Storage Schema",
+            "default": "",
+            "examples": [
+                "cache"
+            ],
+            "pattern": "^(.*)$"
+        },
+        "metadata": {
+            "$id": "#/properties/metadata",
+            "type": "object",
+            "title": "The Metadata Schema",
+            "required": [
+                "filename",
+                "size",
+                "mime_type"
+            ],
+            "properties": {
+                "filename": {
+                    "$id": "#/properties/metadata/properties/filename",
+                    "type": "string",
+                    "title": "The Filename Schema",
+                    "default": "",
+                    "examples": [
+                        "image.png"
+                    ],
+                    "pattern": "^(.*)$"
+                },
+                "size": {
+                    "$id": "#/properties/metadata/properties/size",
+                    "type": "integer",
+                    "title": "The Size Schema",
+                    "default": 0,
+                    "examples": [
+                        26544
+                    ]
+                },
+                "mime_type": {
+                    "$id": "#/properties/metadata/properties/mime_type",
+                    "type": "string",
+                    "title": "The Mime_type Schema",
+                    "default": "",
+                    "examples": [
+                        "image/png"
+                    ],
+                    "pattern": "^(.*)$"
+                }
+            }
+        }
+    }
+}

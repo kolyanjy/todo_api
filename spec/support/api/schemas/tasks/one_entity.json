@@ -1,0 +1,147 @@
+{
+  "definitions": {},
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "http://example.com/root.json",
+  "type": "object",
+  "title": "The Root Schema",
+  "required": [
+    "data"
+  ],
+  "properties": {
+    "data": {
+      "$id": "#/properties/data",
+      "type": "object",
+      "title": "The Data Schema",
+      "required": [
+        "id",
+        "type",
+        "attributes",
+        "relationships"
+      ],
+      "properties": {
+        "id": {
+          "$id": "#/properties/data/properties/id",
+          "type": "string",
+          "title": "The Id Schema",
+          "default": "",
+          "examples": [
+            "1"
+          ],
+          "pattern": "^(.*)$"
+        },
+        "type": {
+          "$id": "#/properties/data/properties/type",
+          "type": "string",
+          "title": "The Type Schema",
+          "default": "",
+          "examples": [
+            "tasks"
+          ],
+          "pattern": "^(.*)$"
+        },
+        "attributes": {
+          "$id": "#/properties/data/properties/attributes",
+          "type": "object",
+          "title": "The Attributes Schema",
+          "required": [
+            "name",
+            "deadline",
+            "complete",
+            "position"
+          ],
+          "properties": {
+            "name": {
+              "$id": "#/properties/data/properties/attributes/properties/name",
+              "type": "string",
+              "title": "The Name Schema",
+              "default": "",
+              "examples": [
+                "task1"
+              ],
+              "pattern": "^(.*)$"
+            },
+            "deadline": {
+              "$id": "#/properties/data/properties/attributes/properties/deadline",
+              "type": "string",
+              "title": "The Deadline Schema",
+              "default": "",
+              "examples": [
+                "2019-10-21T00:00:00.000Z"
+              ],
+              "pattern": "^(.*)$"
+            },
+            "complete": {
+              "$id": "#/properties/data/properties/attributes/properties/complete",
+              "type": "boolean",
+              "title": "The Complete Schema",
+              "default": false,
+              "examples": [
+                false
+              ]
+            },
+            "position": {
+              "$id": "#/properties/data/properties/attributes/properties/position",
+              "type": "integer",
+              "title": "The Position Schema",
+              "default": 0,
+              "examples": [
+                1
+              ]
+            }
+          }
+        },
+        "relationships": {
+          "$id": "#/properties/data/properties/relationships",
+          "type": "object",
+          "title": "The Relationships Schema",
+          "required": [
+            "project"
+          ],
+          "properties": {
+            "project": {
+              "$id": "#/properties/data/properties/relationships/properties/project",
+              "type": "object",
+              "title": "The Project Schema",
+              "required": [
+                "data"
+              ],
+              "properties": {
+                "data": {
+                  "$id": "#/properties/data/properties/relationships/properties/project/properties/data",
+                  "type": "object",
+                  "title": "The Data Schema",
+                  "required": [
+                    "id",
+                    "type"
+                  ],
+                  "properties": {
+                    "id": {
+                      "$id": "#/properties/data/properties/relationships/properties/project/properties/data/properties/id",
+                      "type": "string",
+                      "title": "The Id Schema",
+                      "default": "",
+                      "examples": [
+                        "3"
+                      ],
+                      "pattern": "^(.*)$"
+                    },
+                    "type": {
+                      "$id": "#/properties/data/properties/relationships/properties/project/properties/data/properties/type",
+                      "type": "string",
+                      "title": "The Type Schema",
+                      "default": "",
+                      "examples": [
+                        "projects"
+                      ],
+                      "pattern": "^(.*)$"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
