@@ -1,5 +1,5 @@
 class Comment < ApplicationRecord
-  belongs_to :task
+  belongs_to :task, counter_cache: true
 
   include ImageUploader::Attachment.new(:image)
 
