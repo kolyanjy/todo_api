@@ -24,8 +24,8 @@ gem 'pg'
 gem 'redis'
 
 # uploads
-gem 'shrine'
 gem 'aws-sdk-s3'
+gem 'shrine'
 
 # system
 gem 'bootsnap', '>= 1.1.0', require: false
