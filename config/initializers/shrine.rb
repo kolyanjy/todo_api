@@ -15,14 +15,13 @@ if Rails.configuration.upload_server == :s3
 else
   require 'shrine/storage/file_system'
 
-  Shrine.plugin :upload_endpoint
-
   Shrine.storages = {
     cache: Shrine::Storage::FileSystem.new('public', prefix: 'uploads/cache'),
     store: Shrine::Storage::FileSystem.new('public', prefix: 'uploads')
   }
 end
 
+Shrine.plugin :upload_endpoint
 Shrine.plugin :activerecord
 Shrine.plugin :parsed_json
 Shrine.plugin :determine_mime_type, analyzer: :marcel
