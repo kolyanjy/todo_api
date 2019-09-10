@@ -11,6 +11,7 @@ jobs:
           POSTGRES_USER: kolya
           POSTGRES_DB: todo_api_test
       - image: circleci/redis:5-alpine
+      parallelism: 4
     steps:
       - checkout
       - restore_cache:
