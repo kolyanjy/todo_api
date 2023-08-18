@@ -29,7 +29,7 @@ gem 'shrine'
 
 # system
 gem 'bootsnap', '>= 1.1.0', require: false
-gem 'puma', '~> 3.11'
+gem 'puma', '~> 5.6'
 gem 'rails', '~> 5.2.3'
 
 group :development, :test do
